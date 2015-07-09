@@ -1,5 +1,5 @@
 let assert = require('chai').assert;
-let command = require('../../src/commands/command');
+let command = require('../../../src/commands/command');
 
 describe('Command', () => {
   var c = null;

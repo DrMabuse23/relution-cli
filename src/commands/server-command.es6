@@ -6,7 +6,6 @@ export default class ServerCommand extends Command {
     this.defaultServerIndex = null;
     this.getServerList();
   }
-
   findDefaultIndex(element) {
     if ('name' in element && element.name !== '' && element.name === this) {
       return true;
@@ -38,7 +37,10 @@ export default class ServerCommand extends Command {
   }
 
   add(server) {
-    this.server.push(server);
+    if (this.server) {
+      this.server.push(server);
+    }
+    console.error('this.server', this.server);
   }
 
   default() {

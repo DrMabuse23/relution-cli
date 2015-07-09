@@ -1,9 +1,7 @@
 let assert = require('chai').assert;
-let server = require('../../src/commands/server-command');
-
+let server = require('../../../src/commands/server-command');
 describe('Server Command', () => {
-  var c = null;
-  c = new server();
+  var c = new server();
 
   it('Should properly has a name', () => {
     assert.equal(c.name, 'server');

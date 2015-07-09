@@ -1,9 +1,26 @@
 var fs = require('fs');
-export default class RelutionCli {
+import Project from './project';
 
+export default class RelutionCli {
+  setProject(){
+    this.project = new Project(this.appPrefix);
+    this.project.isProject().then((result) => {
+      if (typeof result === 'object') {
+        this.isProject = true;
+        this.projectConf = result;
+        //console.log(result);
+      }
+    }).catch(function () {
+
+    });
+  }
   constructor(appPrefix = 'relution', debug=true) {
     this.appPrefix = appPrefix;
     this.rcConf = null;
+    this.projectConf = null;
+    this.project = null;
+    this.isProject = false;
+    this.setProject();
   }
 
   getUserHome() {

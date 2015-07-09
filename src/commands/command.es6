@@ -11,5 +11,7 @@ export default class Command {
     //console.log('cli', JSON.stringify(this.cli));
   }
 
-  init() {}
+  init() {
+    return {name: this.name, commands: this.commands};
+  }
 }
