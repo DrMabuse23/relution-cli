@@ -1,5 +1,8 @@
 var fs = require('fs');
+const NATIVE = 'native';
+const HTML5CONTAINER = 'html5';
 import Project from './project';
+import Html5Project from './html5-project';
 
 export default class RelutionCli {
 
@@ -10,8 +13,10 @@ export default class RelutionCli {
     this.rcFilePath = `${this.getUserHome()}/.${this.appPrefix}rc`;
     this.project = null;
     this.isProject = false;
-
-    this.setProject();
+    this.html5Project = null;
+    this.projectType = '';
+    //this.setProject();
+    //this.setHtml5Project();
     this.rcFileExist();
   }
 
@@ -29,16 +34,37 @@ export default class RelutionCli {
     });
   }
 
+  getProjectType () {
+    //var promise = new Promise();
+    return Promise.all([this.setProject, this.setHtml5Project()]);
+  }
+
   setProject(){
     this.project = new Project(this.appPrefix);
-    this.project.isProject().then((result) => {
+    return this.project.isProject().then((result) => {
       if (typeof result === 'object') {
         this.isProject = true;
         this.projectConf = result;
+        return this.projectType = 'native';
         //console.log(result);
       }
     }).catch(function () {
+      console.log(`looks not a ${NATIVE} project`);
+    });
+  }
 
+  setHtml5Project(){
+    this.html5Project = new Html5Project(this.appPrefix);
+    var self = this;
+    return this.html5Project.isProject().then((result) => {
+      if (typeof result === 'object') {
+        self.isProject = true;
+        self.projectConf = result;
+        return self.projectType = 'html5';
+        //console.log(result);
+      }
+    }).catch(function () {
+      console.log(`looks not a ${HTML5CONTAINER} project`);
     });
   }
 
@@ -78,5 +104,16 @@ export default class RelutionCli {
         });
       });
     }, (this));
+  }
+
+  updateRcFile(content){
+    var self = this;
+    return new Promise((resolve, reject) => {
+      return fs.writeFile(self.rcFilePath, JSON.stringify(content), function (err) {
+        if (err) reject(err);
+        console.log('It\'s saved!');
+        return resolve(true);
+      });
+    });
   }
 }
