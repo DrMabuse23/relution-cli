@@ -21,6 +21,7 @@
  */
 
 import ServerCommand from './server-command';
+import DeployCommand from './deploy-command';
 var _ = require('lodash');
 import Translation from './../helper/translation';
 /**
@@ -29,7 +30,7 @@ import Translation from './../helper/translation';
  */
 export default class Tower {
 
-  constructor(commands = [new ServerCommand()]) {
+  constructor(commands = [new ServerCommand(), new DeployCommand()]) {
     this.i18n = new Translation();
     this.commands = commands;
     this.tree = {};

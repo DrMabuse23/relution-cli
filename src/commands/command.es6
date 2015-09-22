@@ -32,6 +32,7 @@ export default class Command {
     this.cli = new RelutionCli();
     this.validation = new Validation();
     this.i18n = new translate();
+    this.tower = null;
     //console.log('name', this.name);
     //console.log('commands', this.commands);
     //console.log('cli', JSON.stringify(this.cli));
@@ -39,5 +40,28 @@ export default class Command {
 
   init() {
     return {name: this.name, commands: this.commands};
+  }
+  /**
+   * @description return only the command names
+   * @return {Array}
+   */
+  flatCommands(){
+    let flat = [];
+    var self = this;
+    this.commands.forEach((command) => {
+      flat.push(self.i18n.t(command[0]));
+    });
+    return flat;
+  }
+  /**
+   *
+   * @return {*[]}
+   */
+  start() {
+    return [this.name, this.i18n.t("Please Choose Your Command"), this.flatCommands()];
+  }
+  exit(inquirer, tower){
+    this.tower = tower;
+    return this.tower.showCommands('Start', this.i18n.t('Please choose Your Command'), this.tower.startCommands);
   }
 }

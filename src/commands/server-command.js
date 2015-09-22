@@ -52,17 +52,7 @@ export default class ServerCommand extends Command {
     return this.server[this.defaultServerIndex];
   }
 
-  /**
-   * @description return only the command names
-   * @return {Array}
-   */
-  flatCommands(){
-    let flat = [];
-    this.commands.forEach((command) => {
-      flat.push(command[0]);
-    });
-    return flat;
-  }
+
   //Stream mcaprc to json
   /**
    *
@@ -82,13 +72,7 @@ export default class ServerCommand extends Command {
     });
   }
 
-  /**
-   *
-   * @return {*[]}
-   */
-  start() {
-    return [this.name, this.i18n.t("Please Choose Your Command"), this.flatCommands()];
-  }
+
 
   /**
    *
@@ -185,9 +169,4 @@ export default class ServerCommand extends Command {
     ];
     inquirer.prompt(configAdd, this.add.bind(this));
   }
-  exit(inquirer, tower){
-    this.tower = tower;
-    return this.tower.showCommands('Start', this.i18n.t('Please choose Your Command'), this.tower.startCommands);
-  }
-
 }
