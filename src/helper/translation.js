@@ -21,48 +21,18 @@
  */
 'use strict';
 export default class Translate{
-  constructor(){
-    this.i18n = require("i18n");
-    console.log(this.i18n);
-    this.t = null;
-    this.i18n.configure({
-      // setup some locales - other locales default to en silently
-      locales:['en_EN', 'de_DE'],
-
-      // fall back from Dutch to German
-      //fallbacks:{'nl': 'de_DE'},
-
-      // you may alter a site wide default locale
-      defaultLocale: 'de_DE',
-
-      // where to store json files - defaults to './locales' relative to modules directory
-      directory: `${__dirname }/../../locales`,
-
-      // setting of log level DEBUG - default to require('debug')('i18n:debug')
-      logDebugFn: function (msg) {
-        console.log('debug', msg);
-      },
-
-      // setting of log level WARN - default to require('debug')('i18n:warn')
-      logWarnFn: function (msg) {
-        console.log('warn', msg);
-      },
-
-      // setting of log level ERROR - default to require('debug')('i18n:error')
-      logErrorFn: function (msg) {
-        console.log('error', msg);
-      }
-    });
-
-    this.i18n.init((err, t) => {
-      console.log('init', err, t);
-      if (err) {
-        console.log(err);
-      }
-      console.log(t);
-    });
+  constructor(defaultLang ='de_DE'){
+    this.locales = {
+      en_EN: require('./../../locales/en_EN.json'),
+      de_DE: require('./../../locales/de_DE.json')
+    };
+    this.default = defaultLang;
   }
-  static t(string){
-    return this.i18n.t(string);
+  t(string){
+    console.log(super.locales);
+    if (this.locales[this.default][string]) {
+      return this.locales[this.default][string];
+    }
+    return string;
   }
 }

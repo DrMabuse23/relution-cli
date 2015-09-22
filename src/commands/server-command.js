@@ -2,8 +2,9 @@ import Command from './command';
 import _ from 'lodash';
 export default class ServerCommand extends Command {
   constructor() {
-    super('server', [['create', true, true], ['delete', true, true], ['list', true, true], ['default', true, true]]);
+    super('server', [['create', true, true], ['delete', true, true], ['list', true, true], ['default', true, true], ['exit', true, true]]);
     this.server = null;
+
     this.defaultServerIndex = null;
     this.tower = null;
     this.getServerList();
@@ -48,7 +49,7 @@ export default class ServerCommand extends Command {
   }
 
   start() {
-    return [this.name,"Please Choose Your Command", this.flatCommands()];
+    return [this.name, this.i18n.t("Please Choose Your Command"), this.flatCommands()];
   }
 
   add(server) {
@@ -59,7 +60,7 @@ export default class ServerCommand extends Command {
     //console.error('this.server', self.cli.rcConf);
     self.cli.updateRcFile(self.cli.rcConf).then((res) => {
       //console.log('updatedfile', res, self);
-      self.tower.showCommands('Start', 'Please choose Your Command', self.tower.startCommands);
+      self.tower.showCommands('Start', this.i18n.t('Please choose Your Command'), self.tower.startCommands);
     });
   }
 
@@ -74,7 +75,7 @@ export default class ServerCommand extends Command {
     //console.error('this.server', self.cli.rcConf);
     self.cli.updateRcFile(self.cli.rcConf).then((res) => {
       console.log('Server is removed from list');
-      self.tower.showCommands('Start', 'Please choose Your Command', self.tower.startCommands);
+      self.tower.showCommands('Start', this.i18n.t('Please choose Your Command'), self.tower.startCommands);
     });
   }
   delete(inquirer, tower){
@@ -140,6 +141,10 @@ export default class ServerCommand extends Command {
       }
     ];
     inquirer.prompt(configAdd, this.add.bind(this));
+  }
+  exit(inquirer, tower){
+    this.tower = tower;
+    return this.tower.showCommands('Start', this.i18n.t('Please choose Your Command'), this.tower.startCommands);
   }
 
 }

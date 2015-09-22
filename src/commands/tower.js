@@ -1,7 +1,10 @@
 import ServerCommand from './server-command';
 var _ = require('lodash');
 import Translation from './../helper/translation';
-
+/**
+ * @class Tower
+ * @description Handles the Commands for the User Output
+ */
 export default class Tower {
 
   constructor(commands = [new ServerCommand()]) {
