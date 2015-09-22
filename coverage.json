@@ -1,0 +1,172 @@
+{
+  "coverage": "6.06%",
+  "expectCount": 99,
+  "actualCount": 6,
+  "files": {
+    "src/cli.js": {
+      "expectCount": 7,
+      "actualCount": 0,
+      "undocumentLines": [
+        6,
+        12,
+        7,
+        9,
+        11,
+        16,
+        10
+      ]
+    },
+    "src/commands/command.es6": {
+      "expectCount": 8,
+      "actualCount": 0,
+      "undocumentLines": [
+        4,
+        9,
+        8,
+        6,
+        11,
+        17,
+        7,
+        10
+      ]
+    },
+    "src/helper/html5-project.js": {
+      "expectCount": 5,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        4,
+        12,
+        6,
+        8
+      ]
+    },
+    "src/helper/InquirerHelper.js": {
+      "expectCount": 4,
+      "actualCount": 0,
+      "undocumentLines": [
+        2,
+        7,
+        3,
+        4
+      ]
+    },
+    "src/helper/project.js": {
+      "expectCount": 5,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        4,
+        12,
+        6,
+        8
+      ]
+    },
+    "src/helper/relution.js": {
+      "expectCount": 19,
+      "actualCount": 0,
+      "undocumentLines": [
+        7,
+        10,
+        9,
+        91,
+        37,
+        23,
+        71,
+        16,
+        15,
+        14,
+        12,
+        17,
+        11,
+        27,
+        13,
+        56,
+        42,
+        75,
+        109
+      ]
+    },
+    "src/commands/server-command.js": {
+      "expectCount": 17,
+      "actualCount": 2,
+      "undocumentLines": [
+        63,
+        8,
+        107,
+        75,
+        12,
+        89,
+        153,
+        18,
+        29,
+        45,
+        79,
+        11,
+        25,
+        59,
+        13
+      ]
+    },
+    "src/components/StartTree.js": {
+      "expectCount": 6,
+      "actualCount": 0,
+      "undocumentLines": [
+        5,
+        18,
+        8,
+        6,
+        10,
+        13
+      ]
+    },
+    "src/commands/tower.js": {
+      "expectCount": 14,
+      "actualCount": 1,
+      "undocumentLines": [
+        69,
+        12,
+        10,
+        38,
+        53,
+        11,
+        15,
+        22,
+        58,
+        14,
+        13,
+        28,
+        33
+      ]
+    },
+    "src/helper/translation.js": {
+      "expectCount": 5,
+      "actualCount": 0,
+      "undocumentLines": [
+        23,
+        24,
+        29,
+        25,
+        31
+      ]
+    },
+    "src/components/Tree.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        4,
+        5,
+        9
+      ]
+    },
+    "src/helper/validation.js": {
+      "expectCount": 6,
+      "actualCount": 3,
+      "undocumentLines": [
+        23,
+        24,
+        43
+      ]
+    }
+  }
+}

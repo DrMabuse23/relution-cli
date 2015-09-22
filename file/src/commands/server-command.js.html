@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/commands/server-command.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+</head>
+<body class="layout-container">
+
+<header>
+  <a href="./">Home</a>
+  <a href="identifiers.html">Identifier</a>
+  <a href="source.html">Source</a>
+  
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/cli.js~Cli.html">Cli</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">commands</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/commands/command.es6~Command.html">Command</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/commands/server-command.js~ServerCommand.html">ServerCommand</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/commands/tower.js~Tower.html">Tower</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/StartTree.js~StartTree.html">StartTree</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/Tree.js~Tree.html">Tree</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">helper</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/helper/InquirerHelper.js~InquirerHelper.html">InquirerHelper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/helper/html5-project.js~Html5Project.html">Html5Project</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/helper/project.js~Project.html">Project</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/helper/relution.js~RelutionCli.html">RelutionCli</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/helper/translation.js~Translate.html">Translate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/helper/validation.js~Validation.html">Validation</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/commands/server-command.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import Command from &apos;./command&apos;;
+import _ from &apos;lodash&apos;;
+/**
+ * ServerCommand
+ * you can create, delete, list, and add a default Server
+ */
+export default class ServerCommand extends Command {
+  constructor() {
+    //available commands
+    super(&apos;server&apos;, [[&apos;create&apos;, true, true], [&apos;delete&apos;, true, true], [&apos;list&apos;, true, true], [&apos;default&apos;, true, true], [&apos;exit&apos;, true, true]]);
+    this.server = null;
+    this.defaultServerIndex = null;
+    this.tower = null;
+    this.getServerList();
+
+  }
+
+  findDefaultIndex(element) {
+    if (&apos;name&apos; in element &amp;&amp; element.name !== &apos;&apos; &amp;&amp; element.name === this) {
+      return true;
+    }
+    return false;
+  }
+
+  setDefaultServerIndex(name) {
+    return this.server.findIndex(this.findDefaultIndex, name);
+  }
+
+  getDefaultServer() {
+    return this.server[this.defaultServerIndex];
+  }
+
+  /**
+   * @description return only the command names
+   * @return {Array}
+   */
+  flatCommands(){
+    let flat = [];
+    this.commands.forEach((command) =&gt; {
+      flat.push(command[0]);
+    });
+    return flat;
+  }
+  //Stream mcaprc to json
+  getServerList() {
+    let self = this;
+    return this.cli.streamRc().then(function () {
+      self.server = self.cli.rcConf.server;
+      self.defaultServerIndex = self.setDefaultServerIndex(self.cli.rcConf.defaultServer);
+      //console.log(&apos;self.server&apos;, self.server);
+      //console.log(&apos;self.cli:&apos;, self.cli.rcConf.defaultServer);
+      //console.log(&apos;self.defaultServer:&apos;, self.defaultServer);
+      return self.server;
+    }).catch(function (e) {
+      console.log(e);
+    });
+  }
+
+  start() {
+    return [this.name, this.i18n.t(&quot;Please Choose Your Command&quot;), this.flatCommands()];
+  }
+
+  add(server) {
+    var self = this;
+    if (this.server) {
+      this.server.push(server);
+    }
+    //console.error(&apos;this.server&apos;, self.cli.rcConf);
+    self.cli.updateRcFile(self.cli.rcConf).then((res) =&gt; {
+      //console.log(&apos;updatedfile&apos;, res, self);
+      self.tower.showCommands(&apos;Start&apos;, this.i18n.t(&apos;Please choose Your Command&apos;), self.tower.startCommands);
+    });
+  }
+
+  default() {
+
+  }
+
+  removeServer(answers){
+    var index = _.findIndex(this.server, {name: answers[&apos;server delete&apos;]});
+    var self = this;
+    this.server.splice(index, 1);
+    //console.error(&apos;this.server&apos;, self.cli.rcConf);
+    self.cli.updateRcFile(self.cli.rcConf).then((res) =&gt; {
+      console.log(&apos;Server is removed from list&apos;);
+      self.tower.showCommands(&apos;Start&apos;, this.i18n.t(&apos;Please choose Your Command&apos;), self.tower.startCommands);
+    });
+  }
+  delete(inquirer, tower){
+    var self = this;
+    var servers = [];
+    var i = 0;
+    this.cli.rcConf.server.forEach((server) =&gt; {
+      servers[i] = server.name;
+      i++;
+    });
+    return inquirer.prompt([
+      {
+        type: &quot;list&quot;,
+        name: `${self.name} delete`,
+        message:  &apos;Please choose the server you will delete&apos;,
+        choices: servers
+      }
+    ], this.removeServer.bind(this));
+  }
+
+  create(inquirer, tower){
+    var self = this;
+    this.tower = tower;
+    let configAdd = [
+      {
+        type    : &apos;input&apos;,
+        name    : &apos;name&apos;,
+        message : &apos;Server Name&apos;,
+        validate: function (value) {
+          var pass = value.match(self.validation.stringNumber);
+          if ( pass ) {
+            return true;
+          } else {
+            return &apos;Please enter a valid Server name&apos;;
+          }
+        }
+      },
+      {
+        type    : &apos;input&apos;,
+        name    : &apos;baseUrl&apos;,
+        message : &apos;Enter the server url (http://....)&apos;,
+        validate: function (value) {
+          var pass = value.match(self.validation.urlPattern);
+
+          if ( pass ) {
+            return true;
+          } else {
+            return &apos;Please enter a valid url&apos;;
+          }
+        }
+      },
+      {
+        type    : &apos;input&apos;,
+        name    : &apos;userName&apos;,
+        message : &apos;Enter your username&apos;,
+        validate: self.validation.notEmptyValidate(&apos;Username&apos;)
+      },
+      {
+        type    : &apos;password&apos;,
+        name    : &apos;password&apos;,
+        message : &apos;Enter your Password&apos;,
+        validate: self.validation.notEmptyValidate(&apos;Password&apos;)
+      }
+    ];
+    inquirer.prompt(configAdd, this.add.bind(this));
+  }
+  exit(inquirer, tower){
+    this.tower = tower;
+    return this.tower.showCommands(&apos;Start&apos;, this.i18n.t(&apos;Please choose Your Command&apos;), this.tower.startCommands);
+  }
+
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.3.0)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

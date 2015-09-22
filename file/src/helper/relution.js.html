@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/helper/relution.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+</head>
+<body class="layout-container">
+
+<header>
+  <a href="./">Home</a>
+  <a href="identifiers.html">Identifier</a>
+  <a href="source.html">Source</a>
+  
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/cli.js~Cli.html">Cli</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">commands</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/commands/command.es6~Command.html">Command</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/commands/server-command.js~ServerCommand.html">ServerCommand</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/commands/tower.js~Tower.html">Tower</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/StartTree.js~StartTree.html">StartTree</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/Tree.js~Tree.html">Tree</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">helper</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/helper/InquirerHelper.js~InquirerHelper.html">InquirerHelper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/helper/html5-project.js~Html5Project.html">Html5Project</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/helper/project.js~Project.html">Project</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/helper/relution.js~RelutionCli.html">RelutionCli</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/helper/translation.js~Translate.html">Translate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/helper/validation.js~Validation.html">Validation</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/helper/relution.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">var fs = require(&apos;fs&apos;);
+const NATIVE = &apos;native&apos;;
+const HTML5CONTAINER = &apos;html5&apos;;
+import Project from &apos;./project&apos;;
+import Html5Project from &apos;./html5-project&apos;;
+
+export default class RelutionCli {
+
+  constructor(appPrefix = &apos;relution&apos;, debug=true) {
+    this.appPrefix = appPrefix;
+    this.rcConf = null;
+    this.projectConf = null;
+    this.rcFilePath = `${this.getUserHome()}/.${this.appPrefix}rc`;
+    this.project = null;
+    this.isProject = false;
+    this.html5Project = null;
+    this.projectType = &apos;&apos;;
+    //this.setProject();
+    //this.setHtml5Project();
+    this.rcFileExist();
+  }
+
+  getRcFilePath(){
+    return this.rcFilePath;
+  }
+
+  rcFileExist(){
+    var self = this;
+    fs.exists(this.rcFilePath, function (exists) {
+      if (!exists) {
+        return self.createRcFile();
+      }
+      console.log(`${self.rcFilePath} available` )
+    });
+  }
+
+  getProjectType () {
+    //var promise = new Promise();
+    return Promise.all([this.setProject, this.setHtml5Project()]);
+  }
+
+  setProject(){
+    this.project = new Project(this.appPrefix);
+    return this.project.isProject().then((result) =&gt; {
+      if (typeof result === &apos;object&apos;) {
+        this.isProject = true;
+        this.projectConf = result;
+        return this.projectType = &apos;native&apos;;
+        //console.log(result);
+      }
+    }).catch(function () {
+      console.log(`looks not a ${NATIVE} project`);
+    });
+  }
+
+  setHtml5Project(){
+    this.html5Project = new Html5Project(this.appPrefix);
+    var self = this;
+    return this.html5Project.isProject().then((result) =&gt; {
+      if (typeof result === &apos;object&apos;) {
+        self.isProject = true;
+        self.projectConf = result;
+        return self.projectType = &apos;html5&apos;;
+        //console.log(result);
+      }
+    }).catch(function () {
+      console.log(`looks not a ${HTML5CONTAINER} project`);
+    });
+  }
+
+  getUserHome() {
+    return process.env[(process.platform == &apos;win32&apos;) ? &apos;USERPROFILE&apos; : &apos;HOME&apos;];
+  }
+
+  streamRc() {
+    let self = this;
+    return new Promise((resolve, reject) =&gt; {
+      return fs.access(self.rcFilePath, fs.R_OK | fs.W_OK, function(err) {
+        return fs.readFile(self.rcFilePath, &apos;utf8&apos;, function (err, data) {
+          if (err) {
+
+            return reject(err);
+          }
+          self.rcConf = JSON.parse(data);
+          return resolve(self.rcConf);
+        });
+      });
+    }, (this));
+  }
+
+  createRcFile() {
+    let self = this;
+    return new Promise((resolve, reject) =&gt; {
+      return fs.access(self.rcFilePath, fs.R_OK | fs.W_OK, function(err) {
+        if (err) {
+          reject(err);
+        }
+        return fs.writeFile(self.rcFilePath, {encoding: &apos;utf8&apos;, mode: 755}, function (err) {
+          if (err) {
+            reject(err);
+          }
+          console.log(&apos;rc file are written&apos;);
+          return resolve(true);
+        });
+      });
+    }, (this));
+  }
+
+  updateRcFile(content){
+    var self = this;
+    return new Promise((resolve, reject) =&gt; {
+      return fs.writeFile(self.rcFilePath, JSON.stringify(content), function (err) {
+        if (err) reject(err);
+        console.log(&apos;It\&apos;s saved!&apos;);
+        return resolve(true);
+      });
+    });
+  }
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.3.0)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
