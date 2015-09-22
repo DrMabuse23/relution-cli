@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../../">
-  <title data-ice="title">src/components/StartTree.js | API Document</title>
+  <title data-ice="title">src/helper/archiver-html5.js | API Document</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -32,11 +32,10 @@
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/cli.js~Cli.html">Cli</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">commands</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/commands/command.es6~Command.html">Command</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/commands/deploy-command.js~DeployRelutionCommand.html">DeployRelutionCommand</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/commands/server-command.js~ServerCommand.html">ServerCommand</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/commands/tower.js~Tower.html">Tower</a></span></span></li>
-<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/StartTree.js~StartTree.html">StartTree</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/components/Tree.js~Tree.html">Tree</a></span></span></li>
-<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">helper</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/helper/InquirerHelper.js~InquirerHelper.html">InquirerHelper</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">helper</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/helper/archiver-html5.js~Archiver.html">Archiver</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/helper/html5-project.js~Html5Project.html">Html5Project</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/helper/project.js~Project.html">Project</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/helper/relution.js~RelutionCli.html">RelutionCli</a></span></span></li>
@@ -46,26 +45,66 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">src/components/StartTree.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">&apos;use strict&apos;;
-import Tree from &apos;./Tree&apos;;
-import i18n from &apos;./../helper/translation&apos;;
+<div class="content" data-ice="content"><h1 data-ice="title">src/helper/archiver-html5.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
+ * Created by pascalbrewing on 13/04/15
+ * Copyright (c)
+ * 2015
+ * M-Way Solutions GmbH. All rights reserved.
+ * http://www.mwaysolutions.com
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are not permitted.
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+ * FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+ * COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+ * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES INCLUDING,
+ * BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+ * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+ * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
+&apos;use strict&apos;;
 
-export default class StartTree extends Tree{
-  constructor() {
-    super();
-    this.commands = null;
+var fs = require(&apos;fs&apos;);
+var archiver = require(&apos;archiver&apos;);
+var archive = archiver(&apos;zip&apos;);
+/**
+ * archive the html5 only porject to a zip
+ */
+export default class Archiver{
+  constructor(rlnFile, bump = true){
+    this.rln = rlnFile;
+    this.bump = bump;
   }
-  getStartCommands(){
 
-  }
-  start(commands){
-    this.commands = commands;
-    this.list(i18n._(&apos;Start&apos;), i18n._(&quot;Please Choose Your Command 1-%s&quot;, commands.length), this.getStartCommands(commands), null, this.choosed);
+  bumpVersion(data){
+    data.versionCode = data.versionCode + 1;
+    return data;
   }
 
-  choosed(answers){
-    console.log(answers);
+  createRlnToWWW(path, data, cb){
+    //console.log(porcess)
+    if (this.bump) {
+      data = this.bumpVersion(data);
+      fs.writeFile(`${path}/app.rln`, JSON.stringify(data, null, 2), {encoding: &apos;utf8&apos;, mode: 755}, (err) =&gt; {
+        if (err) {
+          console.log(err);
+        }
+      });
+    }
+
+    return fs.writeFile(`${path}/www/app.rln`, JSON.stringify(data, null, 2), {encoding: &apos;utf8&apos;, mode: 755}, cb);
+  }
+
+  generateZip(path){
+    let date = new Date().getTime();
+    let mypath = `${path}/upload/${this.rln.versionCode}-${this.rln.package}-${date}.zip`;
+    let output = fs.createWriteStream(mypath);
+    return [output, archive];
   }
 }
 </code></pre>

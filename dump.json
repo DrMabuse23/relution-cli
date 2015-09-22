@@ -8,28 +8,8 @@
     "longname": "src/bootstrap.js",
     "access": null,
     "description": null,
-    "lineNumber": 2,
-    "content": "#!/usr/bin/env node\n'use strict';\nvar path = require('path');\nvar nopt = require('nopt');\nimport Cli from './cli';\nlet cli = new Cli(nopt());\n//export default class BootstrapCLI {\n//  constructor(cli = cli){\n//    this.cli  = cli;\n//  }\n//\n//  init(){\n//\n//  }\n//\n//  isRc(){\n//\n//  }\n//}\n//console.log(cli.tower.tree);\n//console.log(cli.opts);\n//var readline = require('readline'),\n//  rl = readline.createInterface(process.stdin, process.stdout);\n//\n//rl.setPrompt('relution> ');\n//rl.prompt();\n//\n//rl.on('line', function(line) {\n//  switch(line.trim()) {\n//    case 'hello':\n//      console.log('world!');\n//      break;\n//    default:\n//      console.log('Say what? I might have heard `' + line.trim() + '`');\n//      break;\n//  }\n//  rl.prompt();\n//}).on('close', function() {\n//  console.log('Have a great day!');\n//  process.exit(0);\n//});\n"
-  },
-  {
-    "kind": "variable",
-    "static": true,
-    "variation": null,
-    "name": "path",
-    "memberof": "src/bootstrap.js",
-    "longname": "src/bootstrap.js~path",
-    "access": null,
-    "export": false,
-    "importPath": "relution-cli/src/bootstrap.js",
-    "importStyle": null,
-    "description": null,
-    "lineNumber": 3,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
+    "lineNumber": 24,
+    "content": "#!/usr/bin/env node\n/**\n * Created by pascalbrewing on 22/09/15\n * Copyright (c)\n * 2015\n * M-Way Solutions GmbH. All rights reserved.\n * http://www.mwaysolutions.com\n * Redistribution and use in source and binary forms, with or without\n * modification, are not permitted.\n * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\n * \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT\n * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS\n * FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE\n * COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,\n * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES INCLUDING,\n * BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;\n * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\n * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT\n * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN\n * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE\n * POSSIBILITY OF SUCH DAMAGE.\n */\n\n'use strict';\nvar nopt = require('nopt');\nimport Cli from './cli';\nlet cli = new Cli(nopt());\n"
   },
   {
     "kind": "variable",
@@ -43,7 +23,7 @@
     "importPath": "relution-cli/src/bootstrap.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 4,
+    "lineNumber": 25,
     "undocument": true,
     "type": {
       "types": [
@@ -63,7 +43,7 @@
     "importPath": "relution-cli/src/bootstrap.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 6,
+    "lineNumber": 27,
     "undocument": true,
     "type": {
       "types": [
@@ -80,8 +60,8 @@
     "longname": "src/cli.js",
     "access": null,
     "description": null,
-    "lineNumber": 1,
-    "content": "require(\"babel/polyfill\");\nimport Tower from './commands/tower';\nimport StartTree from './components/StartTree';\nimport RelutionCli from './helper/relution';\n\nexport default class Cli{\n  constructor(opts){\n    let self = this;\n    this.helper = new RelutionCli();\n    this.tower = new Tower();\n    this.opts = opts.argv;\n    this.commands = null;\n    this.run();\n  }\n\n  run(){\n    var self = this;\n    var start = new StartTree();\n    return this.helper.getProjectType().then(() => {\n      self.commands = self.tower.getCommandsByType(self.helper.projectType);\n      var flat = self.tower.getStartCommands(self.commands);\n      return self.tower.showCommands('Start', 'Please choose Your Command', flat);\n    });\n  }\n\n}\n"
+    "lineNumber": 23,
+    "content": "/**\n * Created by pascalbrewing on 22/09/15\n * Copyright (c)\n * 2015\n * M-Way Solutions GmbH. All rights reserved.\n * http://www.mwaysolutions.com\n * Redistribution and use in source and binary forms, with or without\n * modification, are not permitted.\n * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\n * \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT\n * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS\n * FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE\n * COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,\n * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES INCLUDING,\n * BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;\n * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\n * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT\n * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN\n * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE\n * POSSIBILITY OF SUCH DAMAGE.\n */\n\nrequire(\"babel/polyfill\");\nimport Tower from './commands/tower';\nimport StartTree from './components/StartTree';\nimport RelutionCli from './helper/relution';\n\nexport default class Cli{\n  constructor(opts){\n    let self = this;\n    this.helper = new RelutionCli();\n    this.tower = new Tower();\n    this.opts = opts.argv;\n    this.commands = null;\n    this.run();\n  }\n\n  run(){\n    var self = this;\n    var start = new StartTree();\n    return this.helper.getProjectType().then(() => {\n      self.commands = self.tower.getCommandsByType(self.helper.projectType);\n      var flat = self.tower.getStartCommands(self.commands);\n      return self.tower.showCommands('Start', 'Please choose Your Command', flat);\n    });\n  }\n\n}\n"
   },
   {
     "kind": "class",
@@ -95,7 +75,7 @@
     "importPath": "relution-cli/src/cli.js",
     "importStyle": "Cli",
     "description": null,
-    "lineNumber": 6,
+    "lineNumber": 28,
     "undocument": true,
     "interface": false
   },
@@ -108,7 +88,7 @@
     "longname": "src/cli.js~Cli#constructor",
     "access": null,
     "description": null,
-    "lineNumber": 7,
+    "lineNumber": 29,
     "undocument": true,
     "params": [
       {
@@ -129,7 +109,7 @@
     "longname": "src/cli.js~Cli#helper",
     "access": null,
     "description": null,
-    "lineNumber": 9,
+    "lineNumber": 31,
     "undocument": true,
     "type": {
       "types": [
@@ -146,7 +126,7 @@
     "longname": "src/cli.js~Cli#tower",
     "access": null,
     "description": null,
-    "lineNumber": 10,
+    "lineNumber": 32,
     "undocument": true,
     "type": {
       "types": [
@@ -163,7 +143,7 @@
     "longname": "src/cli.js~Cli#opts",
     "access": null,
     "description": null,
-    "lineNumber": 11,
+    "lineNumber": 33,
     "undocument": true,
     "type": {
       "types": [
@@ -180,7 +160,7 @@
     "longname": "src/cli.js~Cli#commands",
     "access": null,
     "description": null,
-    "lineNumber": 12,
+    "lineNumber": 34,
     "undocument": true,
     "type": {
       "types": [
@@ -197,7 +177,7 @@
     "longname": "src/cli.js~Cli#run",
     "access": null,
     "description": null,
-    "lineNumber": 16,
+    "lineNumber": 38,
     "undocument": true,
     "params": [],
     "return": {
@@ -216,8 +196,8 @@
     "longname": "src/commands/command.es6",
     "access": null,
     "description": null,
-    "lineNumber": 1,
-    "content": "import RelutionCli from './../helper/relution';\nimport Validation from './../helper/validation';\nimport translate from './../helper/translation';\nexport default class Command {\n\n  constructor(name, commands) {\n    this.name = name;\n    this.commands = commands;\n    this.cli = new RelutionCli();\n    this.validation = new Validation();\n    this.i18n = new translate();\n    //console.log('name', this.name);\n    //console.log('commands', this.commands);\n    //console.log('cli', JSON.stringify(this.cli));\n  }\n\n  init() {\n    return {name: this.name, commands: this.commands};\n  }\n}\n"
+    "lineNumber": 22,
+    "content": "/**\n * Created by pascalbrewing on 22/09/15\n * Copyright (c)\n * 2015\n * M-Way Solutions GmbH. All rights reserved.\n * http://www.mwaysolutions.com\n * Redistribution and use in source and binary forms, with or without\n * modification, are not permitted.\n * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\n * \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT\n * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS\n * FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE\n * COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,\n * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES INCLUDING,\n * BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;\n * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\n * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT\n * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN\n * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE\n * POSSIBILITY OF SUCH DAMAGE.\n */\n'use strict';\n\nimport RelutionCli from './../helper/relution';\nimport Validation from './../helper/validation';\nimport Translate from './../helper/translation';\nexport default class Command {\n\n  constructor(name, commands) {\n    this.name = name;\n    this.commands = commands;\n    this.cli = new RelutionCli();\n    this.validation = new Validation();\n    this.i18n = new Translate();\n    this.tower = null;\n  }\n\n  init() {\n    return {name: this.name, commands: this.commands};\n  }\n  /**\n   * @description return only the command names\n   * @return {Array}\n   */\n  flatCommands(){\n    let flat = [];\n    var self = this;\n    this.commands.forEach((command) => {\n      flat.push(self.i18n.t(command[0]));\n    });\n    return flat;\n  }\n  /**\n   *\n   * @return {*[]}\n   */\n  start() {\n    return [this.name, this.i18n.t(\"Please Choose Your Command\"), this.flatCommands()];\n  }\n\n  /**\n   *\n   * @param inquirer\n   * @param tower\n   * @return {*}\n     */\n  exit(tower){\n    this.tower = tower;\n    return this.tower.showCommands('Start', this.i18n.t('Please choose Your Command'), this.tower.startCommands);\n  }\n}\n"
   },
   {
     "kind": "class",
@@ -231,7 +211,7 @@
     "importPath": "relution-cli/src/commands/command.es6",
     "importStyle": "Command",
     "description": null,
-    "lineNumber": 4,
+    "lineNumber": 27,
     "undocument": true,
     "interface": false
   },
@@ -244,7 +224,7 @@
     "longname": "src/commands/command.es6~Command#constructor",
     "access": null,
     "description": null,
-    "lineNumber": 6,
+    "lineNumber": 29,
     "undocument": true,
     "params": [
       {
@@ -271,7 +251,7 @@
     "longname": "src/commands/command.es6~Command#name",
     "access": null,
     "description": null,
-    "lineNumber": 7,
+    "lineNumber": 30,
     "undocument": true,
     "type": {
       "types": [
@@ -288,7 +268,7 @@
     "longname": "src/commands/command.es6~Command#commands",
     "access": null,
     "description": null,
-    "lineNumber": 8,
+    "lineNumber": 31,
     "undocument": true,
     "type": {
       "types": [
@@ -305,7 +285,7 @@
     "longname": "src/commands/command.es6~Command#cli",
     "access": null,
     "description": null,
-    "lineNumber": 9,
+    "lineNumber": 32,
     "undocument": true,
     "type": {
       "types": [
@@ -322,7 +302,7 @@
     "longname": "src/commands/command.es6~Command#validation",
     "access": null,
     "description": null,
-    "lineNumber": 10,
+    "lineNumber": 33,
     "undocument": true,
     "type": {
       "types": [
@@ -339,7 +319,24 @@
     "longname": "src/commands/command.es6~Command#i18n",
     "access": null,
     "description": null,
-    "lineNumber": 11,
+    "lineNumber": 34,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "tower",
+    "memberof": "src/commands/command.es6~Command",
+    "longname": "src/commands/command.es6~Command#tower",
+    "access": null,
+    "description": null,
+    "lineNumber": 35,
     "undocument": true,
     "type": {
       "types": [
@@ -356,7 +353,7 @@
     "longname": "src/commands/command.es6~Command#init",
     "access": null,
     "description": null,
-    "lineNumber": 17,
+    "lineNumber": 38,
     "undocument": true,
     "params": [],
     "return": {
@@ -364,6 +361,600 @@
         "*"
       ]
     },
+    "generator": false
+  },
+  {
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "flatCommands",
+    "memberof": "src/commands/command.es6~Command",
+    "longname": "src/commands/command.es6~Command#flatCommands",
+    "access": null,
+    "description": null,
+    "lineNumber": 45,
+    "unknown": [
+      {
+        "tagName": "@description",
+        "tagValue": "return only the command names"
+      }
+    ],
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "Array"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "start",
+    "memberof": "src/commands/command.es6~Command",
+    "longname": "src/commands/command.es6~Command#start",
+    "access": null,
+    "description": "",
+    "lineNumber": 57,
+    "params": [],
+    "return": {
+      "nullable": null,
+      "types": [
+        "*[]"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "exit",
+    "memberof": "src/commands/command.es6~Command",
+    "longname": "src/commands/command.es6~Command#exit",
+    "access": null,
+    "description": "",
+    "lineNumber": 67,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "inquirer",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "tower",
+        "description": ""
+      }
+    ],
+    "return": {
+      "nullable": null,
+      "types": [
+        "*"
+      ],
+      "spread": false,
+      "description": ""
+    },
+    "generator": false
+  },
+  {
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "tower",
+    "memberof": "src/commands/command.es6~Command",
+    "longname": "src/commands/command.es6~Command#tower",
+    "access": null,
+    "description": null,
+    "lineNumber": 68,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "kind": "file",
+    "static": true,
+    "variation": null,
+    "name": "src/commands/deploy-command.js",
+    "memberof": null,
+    "longname": "src/commands/deploy-command.js",
+    "access": null,
+    "description": null,
+    "lineNumber": 22,
+    "content": "/**\n * Created by pascalbrewing on 22/09/15\n * Copyright (c)\n * 2015\n * M-Way Solutions GmbH. All rights reserved.\n * http://www.mwaysolutions.com\n * Redistribution and use in source and binary forms, with or without\n * modification, are not permitted.\n * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\n * \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT\n * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS\n * FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE\n * COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,\n * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES INCLUDING,\n * BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;\n * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\n * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT\n * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN\n * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE\n * POSSIBILITY OF SUCH DAMAGE.\n */\n'use strict';\nimport fs from 'fs';\nimport fetch from 'node-fetch';\nimport request from 'request';\nimport _ from 'lodash';\nimport FormData from 'form-data';\n\nimport Command from './command';\nimport Archiver from './../helper/archiver-html5';\nconst AUTH = '/gofer/security/rest/auth/login';\nconst FILES = '/relution/api/v1/files';\nconst METADATA = '/relution/api/v1/apps/fromFile/';\nconst CREATEAPP = '/relution/api/v1/apps/';\n/**\n * DeployRelutionCommand\n * generate a zip from the www folder create a zip and upload it to relution\n */\nexport default class DeployRelutionCommand extends Command {\n\n  constructor() {\n    super('deploy', [['deploy', false, true], ['bumpup', false, true], ['exit', false, true]]);\n    let self = this;\n    this.userForm = {\n      email: null,\n      orgaName: null,\n      password: null,\n      userName: null\n    };\n    this.projectRln = null;\n    this.sessionId = null;\n    this.deployUrl = '';\n\n    this.sessionResponse = null;\n\n    this.cli.streamRc().then(() => {\n      self.server = self.cli.rcConf.server;\n      self.cli.setHtml5Project().then((res) => {\n        self.projectRln = this.cli.html5Project.projectConf;\n        self.archiver = new Archiver(this.cli.html5Project.projectConf, true);\n      });\n    });\n  }\n\n  getServerNames() {\n    let names = [];\n    this.server.forEach((server) => {\n      names.push(`${server.name} ${server.baseurl || server.baseUrl}`);\n    });\n    return names;\n  }\n\n  getJSESSIONID(cookie) {\n    //var re = /\\JSESSIONID=(.*);Path=\\/;Secure/g;\n    //var str = cookie;\n    //var m = re.exec(str);\n    //return m[1];\n    return cookie;\n  }\n\n  /**\n   * @param inquirer\n   * @param tower\n   */\n  deploy(inquirer, tower) {\n    this.tower = tower;\n    var self = this;\n    return inquirer.prompt([\n      {\n        type: \"list\",\n        name: 'serverchoose',\n        message: self.i18n.t('Please choose a Server as deploy target'),\n        choices: self.getServerNames()\n      }\n    ], this.authenticateOnRelution.bind(this));\n  }\n\n  prepareUrl(url) {\n    let pUrl = url.split('');\n    let newUrl = '';\n    if (pUrl[pUrl.length - 1] === '/') {\n      pUrl.forEach((letter, key) => {\n        if (key < pUrl.length - 1) {\n          newUrl += letter;\n        }\n      });\n      return newUrl;\n    }\n    return url;\n  }\n\n  getServerByName(name) {\n    return _.filter(this.server, {name: name})[0];\n  }\n\n  authenticateOnRelution(answers) {\n    var self = this;\n    let name = answers.serverchoose.split(' ')[0];\n    let deployServer = this.getServerByName(name);\n    this.deployUrl = this.prepareUrl(deployServer.baseurl || deployServer.baseUrl);\n    this.userForm.password = deployServer.password;\n    this.userForm.userName = deployServer.userName;\n    //https://mdmdev2.mwaysolutions.com/gofer/security/rest/auth/login?_=1442910094072\n    //JSESSIONID\n    fetch(`${this.deployUrl}${AUTH}`, {\n      method: 'post',\n      body: JSON.stringify(this.userForm),\n      headers: {'Content-Type': 'application/json;charset=UTF-8', 'Accept': 'application/json'}\n    })\n      .then(function (res) {\n        if (res.status !== 200) {\n          return console.log(res.statusText);\n        }\n        self.sessionId = self.getJSESSIONID(res.headers.get('set-cookie'));\n        return res.json()\n      }).then(function (body) {\n      self.sessionResponse = body;\n      self.archiver.createRlnToWWW(process.env.PWD, self.projectRln, (err, res) => {\n        if (err) {\n          console.log('app.rln cant be copied to the www folder');\n          return self.exit();\n        }\n        let temp = self.archiver.generateZip(process.env.PWD);\n        var output = temp[0];\n        let archive = temp[1];\n\n        archive.on('error', function (err) {\n          //throw errconsole\n          console.log(err);\n          return false;\n        });\n\n        archive.pipe(output);\n        archive.directory(`${process.env.PWD}/www`, false, {date: new Date()}).finalize();\n        output.on('close', function () {\n          console.log(`${output.path} is generated`);\n          return self.uploadZip(output.path, self);\n        });\n      });\n      //console.log(body, self.sessionId);\n    });\n  }\n\n  uploadZip(path, self) {\n    console.log('Start Upload');\n    request.post({\n      url: `${self.deployUrl}${FILES}`,\n      formData: {'file': fs.createReadStream(path)},\n      headers: {\n        'Cookie': self.sessionId\n      }\n    }, (err, httpResponse, body) => {\n      if (err) {\n        return console.error('upload failed:', err);\n      }\n      var res = JSON.parse(body);\n      console.log('Upload successful!  Server responded with:', res.message);\n      if (!res.exception) {\n        //console.log(res);\n        self.getAppMetadata(res.results[0].uuid, self);\n      } else {\n        return console.error(res.exception);\n      }\n    });\n  }\n\n  getAppMetadata(uuid, self) {\n    //2\n    //https://mdmdev2.mwaysolutions.com/relution/api/v1/apps/fromFile/FED1C01F-FD33-4A13-82BF-7B88FB6C445C?_=1442910228033\n    request.post({\n        url: `${self.deployUrl}${METADATA}${uuid}`,\n        headers: {\n          'Cookie': self.sessionId,\n          'Content-type': 'application/json'\n        }\n      },\n      (err, httpResponse, body) => {\n        if (err) {\n          return console.error('get metadata failed:', err);\n        }\n        var res = JSON.parse(body);\n        //console.log(res.results[0]);\n        if (res.results[0].uuid) {\n          var unsigned = _.filter(res.results[0].versions, {appUuid: null});\n          console.log('get Metadata successfull: ', JSON.stringify(unsigned));\n          self.createAppOnServer(res.results[0].uuid, unsigned[0], self);\n        } else {\n          self.createAppOnServer(null, res.results[0], self);\n        }\n      });\n  }\n\n  createAppOnServer(uuid, data, self) {//\n    // 3\n    //https://mdmdev2.mwaysolutions.com/relution/api/v1/apps/4C0B639C-BA02-4D0D-95CC-CE014905DDF2/versions?_=1442910384479\n    console.log(`${self.deployUrl}${CREATEAPP}${uuid}/versions`);\n    //`${self.deployUrl}${CREATEAPP}${uuid}/versions`\n    fetch(`${self.deployUrl}${CREATEAPP}${uuid}/versions`, {\n      method: 'POST',\n      body: JSON.stringify(data),\n      headers: {\n        'Cookie': self.sessionId,\n        'Content-type': 'application/json',\n        'Accept': 'application/json'\n      }\n    })\n      .then(function(res) {\n        console.log(res.ok);\n        console.log(res.status);\n        console.log(res.statusText);\n        console.log(res.headers.raw());\n        console.log(res.headers.get('content-type'));\n        return res.json();\n      }).then(function(json) {\n        console.log(json);\n      });\n    //request.post(`${self.deployUrl}${CREATEAPP}${uuid}/versions`, {\n    //    form: data,\n    //    headers: {\n    //      'Cookie': self.sessionId,\n    //      'Content-type': 'application/json',\n    //      'Accept': 'application/json'\n    //    }\n    //  },\n    //  (err, httpResponse, body) => {\n    //    if (err) {\n    //      return console.error('get metadata failed:', err);\n    //    }\n    //    console.log(body);\n    //    //var res = JSON.parse(body);\n    //    //console.log('Application is now available: ', res.message);\n    //    //return self.exit(self.tower);\n    //  });\n  }\n}\n"
+  },
+  {
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "AUTH",
+    "memberof": "src/commands/deploy-command.js",
+    "longname": "src/commands/deploy-command.js~AUTH",
+    "access": null,
+    "export": false,
+    "importPath": "relution-cli/src/commands/deploy-command.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 31,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "FILES",
+    "memberof": "src/commands/deploy-command.js",
+    "longname": "src/commands/deploy-command.js~FILES",
+    "access": null,
+    "export": false,
+    "importPath": "relution-cli/src/commands/deploy-command.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 32,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "METADATA",
+    "memberof": "src/commands/deploy-command.js",
+    "longname": "src/commands/deploy-command.js~METADATA",
+    "access": null,
+    "export": false,
+    "importPath": "relution-cli/src/commands/deploy-command.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 33,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "kind": "variable",
+    "static": true,
+    "variation": null,
+    "name": "CREATEAPP",
+    "memberof": "src/commands/deploy-command.js",
+    "longname": "src/commands/deploy-command.js~CREATEAPP",
+    "access": null,
+    "export": false,
+    "importPath": "relution-cli/src/commands/deploy-command.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 34,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "kind": "class",
+    "static": true,
+    "variation": null,
+    "name": "DeployRelutionCommand",
+    "memberof": "src/commands/deploy-command.js",
+    "longname": "src/commands/deploy-command.js~DeployRelutionCommand",
+    "access": null,
+    "export": true,
+    "importPath": "relution-cli/src/commands/deploy-command.js",
+    "importStyle": "DeployRelutionCommand",
+    "description": "DeployRelutionCommand\ngenerate a zip from the www folder create a zip and upload it to relution",
+    "lineNumber": 39,
+    "interface": false,
+    "extends": [
+      "src/commands/command~Command"
+    ]
+  },
+  {
+    "kind": "constructor",
+    "static": false,
+    "variation": null,
+    "name": "constructor",
+    "memberof": "src/commands/deploy-command.js~DeployRelutionCommand",
+    "longname": "src/commands/deploy-command.js~DeployRelutionCommand#constructor",
+    "access": null,
+    "description": null,
+    "lineNumber": 41,
+    "undocument": true,
+    "params": [],
+    "generator": false
+  },
+  {
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "userForm",
+    "memberof": "src/commands/deploy-command.js~DeployRelutionCommand",
+    "longname": "src/commands/deploy-command.js~DeployRelutionCommand#userForm",
+    "access": null,
+    "description": null,
+    "lineNumber": 44,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "projectRln",
+    "memberof": "src/commands/deploy-command.js~DeployRelutionCommand",
+    "longname": "src/commands/deploy-command.js~DeployRelutionCommand#projectRln",
+    "access": null,
+    "description": null,
+    "lineNumber": 50,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "sessionId",
+    "memberof": "src/commands/deploy-command.js~DeployRelutionCommand",
+    "longname": "src/commands/deploy-command.js~DeployRelutionCommand#sessionId",
+    "access": null,
+    "description": null,
+    "lineNumber": 51,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "deployUrl",
+    "memberof": "src/commands/deploy-command.js~DeployRelutionCommand",
+    "longname": "src/commands/deploy-command.js~DeployRelutionCommand#deployUrl",
+    "access": null,
+    "description": null,
+    "lineNumber": 52,
+    "undocument": true,
+    "type": {
+      "types": [
+        "string"
+      ]
+    }
+  },
+  {
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "sessionResponse",
+    "memberof": "src/commands/deploy-command.js~DeployRelutionCommand",
+    "longname": "src/commands/deploy-command.js~DeployRelutionCommand#sessionResponse",
+    "access": null,
+    "description": null,
+    "lineNumber": 54,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "getServerNames",
+    "memberof": "src/commands/deploy-command.js~DeployRelutionCommand",
+    "longname": "src/commands/deploy-command.js~DeployRelutionCommand#getServerNames",
+    "access": null,
+    "description": null,
+    "lineNumber": 65,
+    "undocument": true,
+    "params": [],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "getJSESSIONID",
+    "memberof": "src/commands/deploy-command.js~DeployRelutionCommand",
+    "longname": "src/commands/deploy-command.js~DeployRelutionCommand#getJSESSIONID",
+    "access": null,
+    "description": null,
+    "lineNumber": 73,
+    "undocument": true,
+    "params": [
+      {
+        "name": "cookie",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "deploy",
+    "memberof": "src/commands/deploy-command.js~DeployRelutionCommand",
+    "longname": "src/commands/deploy-command.js~DeployRelutionCommand#deploy",
+    "access": null,
+    "description": null,
+    "lineNumber": 85,
+    "params": [
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "inquirer",
+        "description": ""
+      },
+      {
+        "nullable": null,
+        "types": [
+          "*"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "tower",
+        "description": ""
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "tower",
+    "memberof": "src/commands/deploy-command.js~DeployRelutionCommand",
+    "longname": "src/commands/deploy-command.js~DeployRelutionCommand#tower",
+    "access": null,
+    "description": null,
+    "lineNumber": 86,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "prepareUrl",
+    "memberof": "src/commands/deploy-command.js~DeployRelutionCommand",
+    "longname": "src/commands/deploy-command.js~DeployRelutionCommand#prepareUrl",
+    "access": null,
+    "description": null,
+    "lineNumber": 98,
+    "undocument": true,
+    "params": [
+      {
+        "name": "url",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "getServerByName",
+    "memberof": "src/commands/deploy-command.js~DeployRelutionCommand",
+    "longname": "src/commands/deploy-command.js~DeployRelutionCommand#getServerByName",
+    "access": null,
+    "description": null,
+    "lineNumber": 112,
+    "undocument": true,
+    "params": [
+      {
+        "name": "name",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
+    "generator": false
+  },
+  {
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "authenticateOnRelution",
+    "memberof": "src/commands/deploy-command.js~DeployRelutionCommand",
+    "longname": "src/commands/deploy-command.js~DeployRelutionCommand#authenticateOnRelution",
+    "access": null,
+    "description": null,
+    "lineNumber": 116,
+    "undocument": true,
+    "params": [
+      {
+        "name": "answers",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "deployUrl",
+    "memberof": "src/commands/deploy-command.js~DeployRelutionCommand",
+    "longname": "src/commands/deploy-command.js~DeployRelutionCommand#deployUrl",
+    "access": null,
+    "description": null,
+    "lineNumber": 120,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "uploadZip",
+    "memberof": "src/commands/deploy-command.js~DeployRelutionCommand",
+    "longname": "src/commands/deploy-command.js~DeployRelutionCommand#uploadZip",
+    "access": null,
+    "description": null,
+    "lineNumber": 164,
+    "undocument": true,
+    "params": [
+      {
+        "name": "path",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "self",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "getAppMetadata",
+    "memberof": "src/commands/deploy-command.js~DeployRelutionCommand",
+    "longname": "src/commands/deploy-command.js~DeployRelutionCommand#getAppMetadata",
+    "access": null,
+    "description": null,
+    "lineNumber": 187,
+    "undocument": true,
+    "params": [
+      {
+        "name": "uuid",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "self",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "generator": false
+  },
+  {
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "createAppOnServer",
+    "memberof": "src/commands/deploy-command.js~DeployRelutionCommand",
+    "longname": "src/commands/deploy-command.js~DeployRelutionCommand#createAppOnServer",
+    "access": null,
+    "description": null,
+    "lineNumber": 213,
+    "undocument": true,
+    "params": [
+      {
+        "name": "uuid",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "data",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "self",
+        "types": [
+          "*"
+        ]
+      }
+    ],
     "generator": false
   },
   {
@@ -375,8 +966,8 @@
     "longname": "src/commands/server-command.js",
     "access": null,
     "description": null,
-    "lineNumber": 1,
-    "content": "import Command from './command';\nimport _ from 'lodash';\n/**\n * ServerCommand\n * you can create, delete, list, and add a default Server\n */\nexport default class ServerCommand extends Command {\n  constructor() {\n    //available commands\n    super('server', [['create', true, true], ['delete', true, true], ['list', true, true], ['default', true, true], ['exit', true, true]]);\n    this.server = null;\n    this.defaultServerIndex = null;\n    this.tower = null;\n    this.getServerList();\n\n  }\n\n  findDefaultIndex(element) {\n    if ('name' in element && element.name !== '' && element.name === this) {\n      return true;\n    }\n    return false;\n  }\n\n  setDefaultServerIndex(name) {\n    return this.server.findIndex(this.findDefaultIndex, name);\n  }\n\n  getDefaultServer() {\n    return this.server[this.defaultServerIndex];\n  }\n\n  /**\n   * @description return only the command names\n   * @return {Array}\n   */\n  flatCommands(){\n    let flat = [];\n    this.commands.forEach((command) => {\n      flat.push(command[0]);\n    });\n    return flat;\n  }\n  //Stream mcaprc to json\n  getServerList() {\n    let self = this;\n    return this.cli.streamRc().then(function () {\n      self.server = self.cli.rcConf.server;\n      self.defaultServerIndex = self.setDefaultServerIndex(self.cli.rcConf.defaultServer);\n      //console.log('self.server', self.server);\n      //console.log('self.cli:', self.cli.rcConf.defaultServer);\n      //console.log('self.defaultServer:', self.defaultServer);\n      return self.server;\n    }).catch(function (e) {\n      console.log(e);\n    });\n  }\n\n  start() {\n    return [this.name, this.i18n.t(\"Please Choose Your Command\"), this.flatCommands()];\n  }\n\n  add(server) {\n    var self = this;\n    if (this.server) {\n      this.server.push(server);\n    }\n    //console.error('this.server', self.cli.rcConf);\n    self.cli.updateRcFile(self.cli.rcConf).then((res) => {\n      //console.log('updatedfile', res, self);\n      self.tower.showCommands('Start', this.i18n.t('Please choose Your Command'), self.tower.startCommands);\n    });\n  }\n\n  default() {\n\n  }\n\n  removeServer(answers){\n    var index = _.findIndex(this.server, {name: answers['server delete']});\n    var self = this;\n    this.server.splice(index, 1);\n    //console.error('this.server', self.cli.rcConf);\n    self.cli.updateRcFile(self.cli.rcConf).then((res) => {\n      console.log('Server is removed from list');\n      self.tower.showCommands('Start', this.i18n.t('Please choose Your Command'), self.tower.startCommands);\n    });\n  }\n  delete(inquirer, tower){\n    var self = this;\n    var servers = [];\n    var i = 0;\n    this.cli.rcConf.server.forEach((server) => {\n      servers[i] = server.name;\n      i++;\n    });\n    return inquirer.prompt([\n      {\n        type: \"list\",\n        name: `${self.name} delete`,\n        message:  'Please choose the server you will delete',\n        choices: servers\n      }\n    ], this.removeServer.bind(this));\n  }\n\n  create(inquirer, tower){\n    var self = this;\n    this.tower = tower;\n    let configAdd = [\n      {\n        type    : 'input',\n        name    : 'name',\n        message : 'Server Name',\n        validate: function (value) {\n          var pass = value.match(self.validation.stringNumber);\n          if ( pass ) {\n            return true;\n          } else {\n            return 'Please enter a valid Server name';\n          }\n        }\n      },\n      {\n        type    : 'input',\n        name    : 'baseUrl',\n        message : 'Enter the server url (http://....)',\n        validate: function (value) {\n          var pass = value.match(self.validation.urlPattern);\n\n          if ( pass ) {\n            return true;\n          } else {\n            return 'Please enter a valid url';\n          }\n        }\n      },\n      {\n        type    : 'input',\n        name    : 'userName',\n        message : 'Enter your username',\n        validate: self.validation.notEmptyValidate('Username')\n      },\n      {\n        type    : 'password',\n        name    : 'password',\n        message : 'Enter your Password',\n        validate: self.validation.notEmptyValidate('Password')\n      }\n    ];\n    inquirer.prompt(configAdd, this.add.bind(this));\n  }\n  exit(inquirer, tower){\n    this.tower = tower;\n    return this.tower.showCommands('Start', this.i18n.t('Please choose Your Command'), this.tower.startCommands);\n  }\n\n}\n"
+    "lineNumber": 23,
+    "content": "/**\n * Created by pascalbrewing on 22/09/15\n * Copyright (c)\n * 2015\n * M-Way Solutions GmbH. All rights reserved.\n * http://www.mwaysolutions.com\n * Redistribution and use in source and binary forms, with or without\n * modification, are not permitted.\n * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\n * \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT\n * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS\n * FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE\n * COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,\n * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES INCLUDING,\n * BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;\n * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\n * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT\n * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN\n * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE\n * POSSIBILITY OF SUCH DAMAGE.\n */\n\nimport Command from './command';\nimport _ from 'lodash';\n/**\n * ServerCommand\n * you can create, delete, list, and add a default Server\n */\nexport default class ServerCommand extends Command {\n  constructor() {\n    //available commands\n    super('server', [['create', true, true], ['delete', true, true], ['list', true, true], ['default', true, true], ['exit', true, true]]);\n    this.server = null;\n    this.defaultServerIndex = null;\n    this.tower = null;\n    this.getServerList();\n\n  }\n\n  findDefaultIndex(element) {\n    if ('name' in element && element.name !== '' && element.name === this) {\n      return true;\n    }\n    return false;\n  }\n\n  setDefaultServerIndex(name) {\n    return this.server.findIndex(this.findDefaultIndex, name);\n  }\n\n  getDefaultServer() {\n    return this.server[this.defaultServerIndex];\n  }\n\n\n  //Stream mcaprc to json\n  /**\n   *\n   * @return {Promise.<T>}\n   */\n  getServerList() {\n    let self = this;\n    return this.cli.streamRc().then(function () {\n      self.server = self.cli.rcConf.server;\n      self.defaultServerIndex = self.setDefaultServerIndex(self.cli.rcConf.defaultServer);\n      //console.log('self.server', self.server);\n      //console.log('self.cli:', self.cli.rcConf.defaultServer);\n      //console.log('self.defaultServer:', self.defaultServer);\n      return self.server;\n    }).catch(function (e) {\n      console.log(e);\n    });\n  }\n\n\n\n  /**\n   *\n   * @param server\n   * @description add a new Server\n   */\n  add(server) {\n    var self = this;\n    if (this.server) {\n      this.server.push(server);\n    }\n    //console.error('this.server', self.cli.rcConf);\n    self.cli.updateRcFile(self.cli.rcConf).then((res) => {\n      //console.log('updatedfile', res, self);\n      self.tower.showCommands('Start', this.i18n.t('Please choose Your Command'), self.tower.startCommands);\n    });\n  }\n\n  default() {\n\n  }\n\n  removeServer(answers){\n    var index = _.findIndex(this.server, {name: answers['server delete']});\n    var self = this;\n    this.server.splice(index, 1);\n    //console.error('this.server', self.cli.rcConf);\n    self.cli.updateRcFile(self.cli.rcConf).then((res) => {\n      console.log('Server is removed from list');\n      self.tower.showCommands('Start', this.i18n.t('Please choose Your Command'), self.tower.startCommands);\n    });\n  }\n  delete(inquirer, tower){\n    var self = this;\n    var servers = [];\n    var i = 0;\n    this.cli.rcConf.server.forEach((server) => {\n      servers[i] = server.name;\n      i++;\n    });\n    return inquirer.prompt([\n      {\n        type: \"list\",\n        name: `${self.name} delete`,\n        message:  'Please choose the server you will delete',\n        choices: servers\n      }\n    ], this.removeServer.bind(this));\n  }\n\n  create(inquirer, tower){\n    var self = this;\n    this.tower = tower;\n    let configAdd = [\n      {\n        type    : 'input',\n        name    : 'name',\n        message : 'Server Name',\n        validate: function (value) {\n          var pass = value.match(self.validation.stringNumber);\n          if ( pass ) {\n            return true;\n          } else {\n            return 'Please enter a valid Server name';\n          }\n        }\n      },\n      {\n        type    : 'input',\n        name    : 'baseUrl',\n        message : 'Enter the server url (http://....)',\n        validate: function (value) {\n          var pass = value.match(self.validation.urlPattern);\n\n          if ( pass ) {\n            return true;\n          } else {\n            return 'Please enter a valid url';\n          }\n        }\n      },\n      {\n        type    : 'input',\n        name    : 'userName',\n        message : 'Enter your username',\n        validate: self.validation.notEmptyValidate('Username')\n      },\n      {\n        type    : 'password',\n        name    : 'password',\n        message : 'Enter your Password',\n        validate: self.validation.notEmptyValidate('Password')\n      }\n    ];\n    inquirer.prompt(configAdd, this.add.bind(this));\n  }\n}\n"
   },
   {
     "kind": "class",
@@ -390,7 +981,7 @@
     "importPath": "relution-cli/src/commands/server-command.js",
     "importStyle": "ServerCommand",
     "description": "ServerCommand\nyou can create, delete, list, and add a default Server",
-    "lineNumber": 7,
+    "lineNumber": 29,
     "interface": false,
     "extends": [
       "src/commands/command~Command"
@@ -405,7 +996,7 @@
     "longname": "src/commands/server-command.js~ServerCommand#constructor",
     "access": null,
     "description": null,
-    "lineNumber": 8,
+    "lineNumber": 30,
     "undocument": true,
     "params": [],
     "generator": false
@@ -419,7 +1010,7 @@
     "longname": "src/commands/server-command.js~ServerCommand#server",
     "access": null,
     "description": null,
-    "lineNumber": 11,
+    "lineNumber": 33,
     "undocument": true,
     "type": {
       "types": [
@@ -436,7 +1027,7 @@
     "longname": "src/commands/server-command.js~ServerCommand#defaultServerIndex",
     "access": null,
     "description": null,
-    "lineNumber": 12,
+    "lineNumber": 34,
     "undocument": true,
     "type": {
       "types": [
@@ -453,7 +1044,7 @@
     "longname": "src/commands/server-command.js~ServerCommand#tower",
     "access": null,
     "description": null,
-    "lineNumber": 13,
+    "lineNumber": 35,
     "undocument": true,
     "type": {
       "types": [
@@ -470,7 +1061,7 @@
     "longname": "src/commands/server-command.js~ServerCommand#findDefaultIndex",
     "access": null,
     "description": null,
-    "lineNumber": 18,
+    "lineNumber": 40,
     "undocument": true,
     "params": [
       {
@@ -496,7 +1087,7 @@
     "longname": "src/commands/server-command.js~ServerCommand#setDefaultServerIndex",
     "access": null,
     "description": null,
-    "lineNumber": 25,
+    "lineNumber": 47,
     "undocument": true,
     "params": [
       {
@@ -522,40 +1113,13 @@
     "longname": "src/commands/server-command.js~ServerCommand#getDefaultServer",
     "access": null,
     "description": null,
-    "lineNumber": 29,
+    "lineNumber": 51,
     "undocument": true,
     "params": [],
     "return": {
       "types": [
         "*"
       ]
-    },
-    "generator": false
-  },
-  {
-    "kind": "method",
-    "static": false,
-    "variation": null,
-    "name": "flatCommands",
-    "memberof": "src/commands/server-command.js~ServerCommand",
-    "longname": "src/commands/server-command.js~ServerCommand#flatCommands",
-    "access": null,
-    "description": null,
-    "lineNumber": 37,
-    "unknown": [
-      {
-        "tagName": "@description",
-        "tagValue": "return only the command names"
-      }
-    ],
-    "params": [],
-    "return": {
-      "nullable": null,
-      "types": [
-        "Array"
-      ],
-      "spread": false,
-      "description": ""
     },
     "generator": false
   },
@@ -567,33 +1131,16 @@
     "memberof": "src/commands/server-command.js~ServerCommand",
     "longname": "src/commands/server-command.js~ServerCommand#getServerList",
     "access": null,
-    "description": null,
-    "lineNumber": 45,
-    "undocument": true,
+    "description": "",
+    "lineNumber": 61,
     "params": [],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
-    },
-    "generator": false
-  },
-  {
-    "kind": "method",
-    "static": false,
-    "variation": null,
-    "name": "start",
-    "memberof": "src/commands/server-command.js~ServerCommand",
-    "longname": "src/commands/server-command.js~ServerCommand#start",
-    "access": null,
-    "description": null,
-    "lineNumber": 59,
-    "undocument": true,
-    "params": [],
-    "return": {
-      "types": [
-        "*"
-      ]
+        "Promise.<T>"
+      ],
+      "spread": false,
+      "description": ""
     },
     "generator": false
   },
@@ -605,15 +1152,24 @@
     "memberof": "src/commands/server-command.js~ServerCommand",
     "longname": "src/commands/server-command.js~ServerCommand#add",
     "access": null,
-    "description": null,
-    "lineNumber": 63,
-    "undocument": true,
+    "description": "",
+    "lineNumber": 82,
+    "unknown": [
+      {
+        "tagName": "@description",
+        "tagValue": "add a new Server"
+      }
+    ],
     "params": [
       {
-        "name": "server",
+        "nullable": null,
         "types": [
           "*"
-        ]
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "server",
+        "description": ""
       }
     ],
     "generator": false
@@ -627,7 +1183,7 @@
     "longname": "src/commands/server-command.js~ServerCommand#default",
     "access": null,
     "description": null,
-    "lineNumber": 75,
+    "lineNumber": 94,
     "undocument": true,
     "params": [],
     "generator": false
@@ -641,7 +1197,7 @@
     "longname": "src/commands/server-command.js~ServerCommand#removeServer",
     "access": null,
     "description": null,
-    "lineNumber": 79,
+    "lineNumber": 98,
     "undocument": true,
     "params": [
       {
@@ -662,7 +1218,7 @@
     "longname": "src/commands/server-command.js~ServerCommand#delete",
     "access": null,
     "description": null,
-    "lineNumber": 89,
+    "lineNumber": 108,
     "undocument": true,
     "params": [
       {
@@ -694,7 +1250,7 @@
     "longname": "src/commands/server-command.js~ServerCommand#create",
     "access": null,
     "description": null,
-    "lineNumber": 107,
+    "lineNumber": 126,
     "undocument": true,
     "params": [
       {
@@ -721,56 +1277,7 @@
     "longname": "src/commands/server-command.js~ServerCommand#tower",
     "access": null,
     "description": null,
-    "lineNumber": 109,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "kind": "method",
-    "static": false,
-    "variation": null,
-    "name": "exit",
-    "memberof": "src/commands/server-command.js~ServerCommand",
-    "longname": "src/commands/server-command.js~ServerCommand#exit",
-    "access": null,
-    "description": null,
-    "lineNumber": 153,
-    "undocument": true,
-    "params": [
-      {
-        "name": "inquirer",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "tower",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    },
-    "generator": false
-  },
-  {
-    "kind": "member",
-    "static": false,
-    "variation": null,
-    "name": "tower",
-    "memberof": "src/commands/server-command.js~ServerCommand",
-    "longname": "src/commands/server-command.js~ServerCommand#tower",
-    "access": null,
-    "description": null,
-    "lineNumber": 154,
+    "lineNumber": 128,
     "undocument": true,
     "type": {
       "types": [
@@ -787,8 +1294,8 @@
     "longname": "src/commands/tower.js",
     "access": null,
     "description": null,
-    "lineNumber": 1,
-    "content": "import ServerCommand from './server-command';\nvar _ = require('lodash');\nimport Translation from './../helper/translation';\n/**\n * @class Tower\n * @description Handles the Commands for the User Output\n */\nexport default class Tower {\n\n  constructor(commands = [new ServerCommand()]) {\n    this.i18n = new Translation();\n    this.commands = commands;\n    this.tree = {};\n    this.startCommands = null;\n    this.inquirer = require('inquirer');\n    var self = this;\n    commands.forEach((command) => {\n      self.registerCommand(command);\n    });\n  }\n\n  registerCommand(command) {\n    command.init();\n    this.commands[command.name] = command;\n    this.tree[command.name] = command.commands;\n  }\n\n  triggerCommand(name, method) {\n    var subCommands = this.commands[name][method]();\n    return this.showCommands(subCommands[0], subCommands[1], subCommands[2], this.commandCallback);\n  }\n\n  triggerSubCommand(name, method) {\n    console.log(name, method);\n    return this.commands[name][method](this.inquirer, this);\n  }\n\n  getCommandsByType(type = 'native') {\n    var self = this;\n    var availableCommands = {};\n    var keys = Object.keys(this.tree);\n    for(var i = 0, l = keys.length; i < l; i++) {\n      availableCommands[keys[i]] = _.filter(self.tree[keys[i]], function(n) {\n        if (type === 'native' && n[1] || type === 'html5' && n[2]) {\n          return n[0];\n        }\n        return false;\n      });\n    }\n    return availableCommands;\n  }\n\n  getStartCommands(commands){\n    this.startCommands = Object.keys(commands)\n    return this.startCommands;\n  }\n\n  showCommands(name = \"Start\", message = \"Please Choose Your Command\",  commands){\n    return this.inquirer.prompt([\n      {\n        type: \"list\",\n        name: name,\n        message:  message,\n        choices: commands\n      }\n    ], this.commandCallback.bind(this));\n  }\n\n  commandCallback(answers){\n    var self = this;\n    var keys = Object.keys(answers);\n    if (answers.Start) {\n      console.log('callback Start', answers);\n      self.triggerCommand(answers.Start, 'start');\n    } else {\n      console.log('callback sub', answers, keys[0], answers[keys[0]]);\n\n      self.triggerSubCommand(keys[0], answers[keys[0]]);\n    }\n  }\n}\n"
+    "lineNumber": 23,
+    "content": "/**\n * Created by pascalbrewing on 22/09/15\n * Copyright (c)\n * 2015\n * M-Way Solutions GmbH. All rights reserved.\n * http://www.mwaysolutions.com\n * Redistribution and use in source and binary forms, with or without\n * modification, are not permitted.\n * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\n * \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT\n * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS\n * FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE\n * COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,\n * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES INCLUDING,\n * BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;\n * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\n * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT\n * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN\n * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE\n * POSSIBILITY OF SUCH DAMAGE.\n */\n\nimport ServerCommand from './server-command';\nimport DeployCommand from './deploy-command';\nvar _ = require('lodash');\nimport Translation from './../helper/translation';\n/**\n * @class Tower\n * @description Handles the Commands for the User Output\n */\nexport default class Tower {\n\n  constructor(commands = [new ServerCommand(), new DeployCommand()]) {\n    this.i18n = new Translation();\n    this.commands = commands;\n    this.tree = {};\n    this.startCommands = null;\n    this.inquirer = require('inquirer');\n    var self = this;\n    commands.forEach((command) => {\n      self.registerCommand(command);\n    });\n  }\n\n  registerCommand(command) {\n    command.init();\n    this.commands[command.name] = command;\n    this.tree[command.name] = command.commands;\n  }\n\n  triggerCommand(name, method) {\n    var subCommands = this.commands[name][method]();\n    return this.showCommands(subCommands[0], subCommands[1], subCommands[2], this.commandCallback);\n  }\n\n  triggerSubCommand(name, method) {\n    console.log(name, method);\n    return this.commands[name][method](this.inquirer, this);\n  }\n\n  getCommandsByType(type = 'native') {\n    var self = this;\n    var availableCommands = {};\n    var keys = Object.keys(this.tree);\n    for(var i = 0, l = keys.length; i < l; i++) {\n      availableCommands[keys[i]] = _.filter(self.tree[keys[i]], function(n) {\n        if (type === 'native' && n[1] || type === 'html5' && n[2]) {\n          return n[0];\n        }\n        return false;\n      });\n    }\n    return availableCommands;\n  }\n\n  getStartCommands(commands){\n    this.startCommands = Object.keys(commands);\n    return this.startCommands;\n  }\n\n  showCommands(name = \"Start\", message = \"Please Choose Your Command\",  commands){\n    return this.inquirer.prompt([\n      {\n        type: \"list\",\n        name: name,\n        message:  message,\n        choices: commands\n      }\n    ], this.commandCallback.bind(this));\n  }\n\n  commandCallback(answers){\n    var self = this;\n    var keys = Object.keys(answers);\n    if (answers.Start) {\n      //console.log('callback Start', answers);\n      self.triggerCommand(answers.Start, 'start');\n    } else {\n      //console.log('callback sub', answers, keys[0], answers[keys[0]]);\n      self.triggerSubCommand(keys[0], answers[keys[0]]);\n    }\n  }\n}\n"
   },
   {
     "kind": "variable",
@@ -802,7 +1309,7 @@
     "importPath": "relution-cli/src/commands/tower.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 2,
+    "lineNumber": 25,
     "undocument": true,
     "type": {
       "types": [
@@ -822,7 +1329,7 @@
     "importPath": "relution-cli/src/commands/tower.js",
     "importStyle": "Tower",
     "description": null,
-    "lineNumber": 8,
+    "lineNumber": 31,
     "unknown": [
       {
         "tagName": "@class",
@@ -844,7 +1351,7 @@
     "longname": "src/commands/tower.js~Tower#constructor",
     "access": null,
     "description": null,
-    "lineNumber": 10,
+    "lineNumber": 33,
     "undocument": true,
     "params": [
       {
@@ -854,9 +1361,10 @@
           "undefined[]"
         ],
         "defaultRaw": [
+          null,
           null
         ],
-        "defaultValue": "[null]"
+        "defaultValue": "[null,null]"
       }
     ],
     "generator": false
@@ -870,7 +1378,7 @@
     "longname": "src/commands/tower.js~Tower#i18n",
     "access": null,
     "description": null,
-    "lineNumber": 11,
+    "lineNumber": 34,
     "undocument": true,
     "type": {
       "types": [
@@ -887,7 +1395,7 @@
     "longname": "src/commands/tower.js~Tower#commands",
     "access": null,
     "description": null,
-    "lineNumber": 12,
+    "lineNumber": 35,
     "undocument": true,
     "type": {
       "types": [
@@ -904,7 +1412,7 @@
     "longname": "src/commands/tower.js~Tower#tree",
     "access": null,
     "description": null,
-    "lineNumber": 13,
+    "lineNumber": 36,
     "undocument": true,
     "type": {
       "types": [
@@ -921,7 +1429,7 @@
     "longname": "src/commands/tower.js~Tower#startCommands",
     "access": null,
     "description": null,
-    "lineNumber": 14,
+    "lineNumber": 37,
     "undocument": true,
     "type": {
       "types": [
@@ -938,7 +1446,7 @@
     "longname": "src/commands/tower.js~Tower#inquirer",
     "access": null,
     "description": null,
-    "lineNumber": 15,
+    "lineNumber": 38,
     "undocument": true,
     "type": {
       "types": [
@@ -955,7 +1463,7 @@
     "longname": "src/commands/tower.js~Tower#registerCommand",
     "access": null,
     "description": null,
-    "lineNumber": 22,
+    "lineNumber": 45,
     "undocument": true,
     "params": [
       {
@@ -976,7 +1484,7 @@
     "longname": "src/commands/tower.js~Tower#triggerCommand",
     "access": null,
     "description": null,
-    "lineNumber": 28,
+    "lineNumber": 51,
     "undocument": true,
     "params": [
       {
@@ -1008,7 +1516,7 @@
     "longname": "src/commands/tower.js~Tower#triggerSubCommand",
     "access": null,
     "description": null,
-    "lineNumber": 33,
+    "lineNumber": 56,
     "undocument": true,
     "params": [
       {
@@ -1040,7 +1548,7 @@
     "longname": "src/commands/tower.js~Tower#getCommandsByType",
     "access": null,
     "description": null,
-    "lineNumber": 38,
+    "lineNumber": 61,
     "undocument": true,
     "params": [
       {
@@ -1069,7 +1577,7 @@
     "longname": "src/commands/tower.js~Tower#getStartCommands",
     "access": null,
     "description": null,
-    "lineNumber": 53,
+    "lineNumber": 76,
     "undocument": true,
     "params": [
       {
@@ -1095,7 +1603,7 @@
     "longname": "src/commands/tower.js~Tower#startCommands",
     "access": null,
     "description": null,
-    "lineNumber": 54,
+    "lineNumber": 77,
     "undocument": true,
     "type": {
       "types": [
@@ -1112,7 +1620,7 @@
     "longname": "src/commands/tower.js~Tower#showCommands",
     "access": null,
     "description": null,
-    "lineNumber": 58,
+    "lineNumber": 81,
     "undocument": true,
     "params": [
       {
@@ -1156,7 +1664,7 @@
     "longname": "src/commands/tower.js~Tower#commandCallback",
     "access": null,
     "description": null,
-    "lineNumber": 69,
+    "lineNumber": 92,
     "undocument": true,
     "params": [
       {
@@ -1172,57 +1680,27 @@
     "kind": "file",
     "static": true,
     "variation": null,
-    "name": "src/components/StartTree.js",
+    "name": "src/helper/archiver-html5.js",
     "memberof": null,
-    "longname": "src/components/StartTree.js",
+    "longname": "src/helper/archiver-html5.js",
     "access": null,
     "description": null,
-    "lineNumber": 1,
-    "content": "'use strict';\nimport Tree from './Tree';\nimport i18n from './../helper/translation';\n\nexport default class StartTree extends Tree{\n  constructor() {\n    super();\n    this.commands = null;\n  }\n  getStartCommands(){\n\n  }\n  start(commands){\n    this.commands = commands;\n    this.list(i18n._('Start'), i18n._(\"Please Choose Your Command 1-%s\", commands.length), this.getStartCommands(commands), null, this.choosed);\n  }\n\n  choosed(answers){\n    console.log(answers);\n  }\n}\n"
+    "lineNumber": 22,
+    "content": "/**\n * Created by pascalbrewing on 13/04/15\n * Copyright (c)\n * 2015\n * M-Way Solutions GmbH. All rights reserved.\n * http://www.mwaysolutions.com\n * Redistribution and use in source and binary forms, with or without\n * modification, are not permitted.\n * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\n * \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT\n * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS\n * FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE\n * COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,\n * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES INCLUDING,\n * BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;\n * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\n * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT\n * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN\n * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE\n * POSSIBILITY OF SUCH DAMAGE.\n */\n'use strict';\n\nvar fs = require('fs');\nvar archiver = require('archiver');\nvar archive = archiver('zip');\n/**\n * archive the html5 only porject to a zip\n */\nexport default class Archiver{\n  constructor(rlnFile, bump = true){\n    this.rln = rlnFile;\n    this.bump = bump;\n  }\n\n  bumpVersion(data){\n    data.versionCode = data.versionCode + 1;\n    return data;\n  }\n\n  createRlnToWWW(path, data, cb){\n    //console.log(porcess)\n    if (this.bump) {\n      data = this.bumpVersion(data);\n      fs.writeFile(`${path}/app.rln`, JSON.stringify(data, null, 2), {encoding: 'utf8', mode: 755}, (err) => {\n        if (err) {\n          console.log(err);\n        }\n      });\n    }\n\n    return fs.writeFile(`${path}/www/app.rln`, JSON.stringify(data, null, 2), {encoding: 'utf8', mode: 755}, cb);\n  }\n\n  generateZip(path){\n    let date = new Date().getTime();\n    let mypath = `${path}/upload/${this.rln.versionCode}-${this.rln.package}-${date}.zip`;\n    let output = fs.createWriteStream(mypath);\n    return [output, archive];\n  }\n}\n"
   },
   {
-    "kind": "class",
+    "kind": "variable",
     "static": true,
     "variation": null,
-    "name": "StartTree",
-    "memberof": "src/components/StartTree.js",
-    "longname": "src/components/StartTree.js~StartTree",
+    "name": "fs",
+    "memberof": "src/helper/archiver-html5.js",
+    "longname": "src/helper/archiver-html5.js~fs",
     "access": null,
-    "export": true,
-    "importPath": "relution-cli/src/components/StartTree.js",
-    "importStyle": "StartTree",
+    "export": false,
+    "importPath": "relution-cli/src/helper/archiver-html5.js",
+    "importStyle": null,
     "description": null,
-    "lineNumber": 5,
-    "undocument": true,
-    "interface": false,
-    "extends": [
-      "src/components/Tree~Tree"
-    ]
-  },
-  {
-    "kind": "constructor",
-    "static": false,
-    "variation": null,
-    "name": "constructor",
-    "memberof": "src/components/StartTree.js~StartTree",
-    "longname": "src/components/StartTree.js~StartTree#constructor",
-    "access": null,
-    "description": null,
-    "lineNumber": 6,
-    "undocument": true,
-    "params": [],
-    "generator": false
-  },
-  {
-    "kind": "member",
-    "static": false,
-    "variation": null,
-    "name": "commands",
-    "memberof": "src/components/StartTree.js~StartTree",
-    "longname": "src/components/StartTree.js~StartTree#commands",
-    "access": null,
-    "description": null,
-    "lineNumber": 8,
+    "lineNumber": 24,
     "undocument": true,
     "type": {
       "types": [
@@ -1231,50 +1709,18 @@
     }
   },
   {
-    "kind": "method",
-    "static": false,
+    "kind": "variable",
+    "static": true,
     "variation": null,
-    "name": "getStartCommands",
-    "memberof": "src/components/StartTree.js~StartTree",
-    "longname": "src/components/StartTree.js~StartTree#getStartCommands",
+    "name": "archiver",
+    "memberof": "src/helper/archiver-html5.js",
+    "longname": "src/helper/archiver-html5.js~archiver",
     "access": null,
+    "export": false,
+    "importPath": "relution-cli/src/helper/archiver-html5.js",
+    "importStyle": null,
     "description": null,
-    "lineNumber": 10,
-    "undocument": true,
-    "params": [],
-    "generator": false
-  },
-  {
-    "kind": "method",
-    "static": false,
-    "variation": null,
-    "name": "start",
-    "memberof": "src/components/StartTree.js~StartTree",
-    "longname": "src/components/StartTree.js~StartTree#start",
-    "access": null,
-    "description": null,
-    "lineNumber": 13,
-    "undocument": true,
-    "params": [
-      {
-        "name": "commands",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "generator": false
-  },
-  {
-    "kind": "member",
-    "static": false,
-    "variation": null,
-    "name": "commands",
-    "memberof": "src/components/StartTree.js~StartTree",
-    "longname": "src/components/StartTree.js~StartTree#commands",
-    "access": null,
-    "description": null,
-    "lineNumber": 14,
+    "lineNumber": 25,
     "undocument": true,
     "type": {
       "types": [
@@ -1283,52 +1729,38 @@
     }
   },
   {
-    "kind": "method",
-    "static": false,
-    "variation": null,
-    "name": "choosed",
-    "memberof": "src/components/StartTree.js~StartTree",
-    "longname": "src/components/StartTree.js~StartTree#choosed",
-    "access": null,
-    "description": null,
-    "lineNumber": 18,
-    "undocument": true,
-    "params": [
-      {
-        "name": "answers",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "generator": false
-  },
-  {
-    "kind": "file",
+    "kind": "variable",
     "static": true,
     "variation": null,
-    "name": "src/components/Tree.js",
-    "memberof": null,
-    "longname": "src/components/Tree.js",
+    "name": "archive",
+    "memberof": "src/helper/archiver-html5.js",
+    "longname": "src/helper/archiver-html5.js~archive",
     "access": null,
+    "export": false,
+    "importPath": "relution-cli/src/helper/archiver-html5.js",
+    "importStyle": null,
     "description": null,
-    "lineNumber": 1,
-    "content": "'use strict';\nimport inquirer from 'inquirer';\n\nexport default class Tree{\n  constructor(){\n\n  }\n\n  list(name, message, choices, bottom, cb){\n    return inquirer.prompt([\n      {\n        type: \"list\",\n        name: name,\n        message: message,\n        choices: choices\n      }\n    ], cb);\n  }\n}\n"
+    "lineNumber": 26,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
   },
   {
     "kind": "class",
     "static": true,
     "variation": null,
-    "name": "Tree",
-    "memberof": "src/components/Tree.js",
-    "longname": "src/components/Tree.js~Tree",
+    "name": "Archiver",
+    "memberof": "src/helper/archiver-html5.js",
+    "longname": "src/helper/archiver-html5.js~Archiver",
     "access": null,
     "export": true,
-    "importPath": "relution-cli/src/components/Tree.js",
-    "importStyle": "Tree",
-    "description": null,
-    "lineNumber": 4,
-    "undocument": true,
+    "importPath": "relution-cli/src/helper/archiver-html5.js",
+    "importStyle": "Archiver",
+    "description": "archive the html5 only porject to a zip",
+    "lineNumber": 30,
     "interface": false
   },
   {
@@ -1336,47 +1768,111 @@
     "static": false,
     "variation": null,
     "name": "constructor",
-    "memberof": "src/components/Tree.js~Tree",
-    "longname": "src/components/Tree.js~Tree#constructor",
+    "memberof": "src/helper/archiver-html5.js~Archiver",
+    "longname": "src/helper/archiver-html5.js~Archiver#constructor",
     "access": null,
     "description": null,
-    "lineNumber": 5,
+    "lineNumber": 31,
     "undocument": true,
-    "params": [],
+    "params": [
+      {
+        "name": "rlnFile",
+        "types": [
+          "*"
+        ]
+      },
+      {
+        "name": "bump",
+        "optional": true,
+        "types": [
+          "boolean"
+        ],
+        "defaultRaw": true,
+        "defaultValue": "true"
+      }
+    ],
+    "generator": false
+  },
+  {
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "rln",
+    "memberof": "src/helper/archiver-html5.js~Archiver",
+    "longname": "src/helper/archiver-html5.js~Archiver#rln",
+    "access": null,
+    "description": null,
+    "lineNumber": 32,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "kind": "member",
+    "static": false,
+    "variation": null,
+    "name": "bump",
+    "memberof": "src/helper/archiver-html5.js~Archiver",
+    "longname": "src/helper/archiver-html5.js~Archiver#bump",
+    "access": null,
+    "description": null,
+    "lineNumber": 33,
+    "undocument": true,
+    "type": {
+      "types": [
+        "*"
+      ]
+    }
+  },
+  {
+    "kind": "method",
+    "static": false,
+    "variation": null,
+    "name": "bumpVersion",
+    "memberof": "src/helper/archiver-html5.js~Archiver",
+    "longname": "src/helper/archiver-html5.js~Archiver#bumpVersion",
+    "access": null,
+    "description": null,
+    "lineNumber": 36,
+    "undocument": true,
+    "params": [
+      {
+        "name": "data",
+        "types": [
+          "*"
+        ]
+      }
+    ],
+    "return": {
+      "types": [
+        "*"
+      ]
+    },
     "generator": false
   },
   {
     "kind": "method",
     "static": false,
     "variation": null,
-    "name": "list",
-    "memberof": "src/components/Tree.js~Tree",
-    "longname": "src/components/Tree.js~Tree#list",
+    "name": "createRlnToWWW",
+    "memberof": "src/helper/archiver-html5.js~Archiver",
+    "longname": "src/helper/archiver-html5.js~Archiver#createRlnToWWW",
     "access": null,
     "description": null,
-    "lineNumber": 9,
+    "lineNumber": 41,
     "undocument": true,
     "params": [
       {
-        "name": "name",
+        "name": "path",
         "types": [
           "*"
         ]
       },
       {
-        "name": "message",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "choices",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "bottom",
+        "name": "data",
         "types": [
           "*"
         ]
@@ -1396,96 +1892,19 @@
     "generator": false
   },
   {
-    "kind": "file",
-    "static": true,
-    "variation": null,
-    "name": "src/helper/InquirerHelper.js",
-    "memberof": null,
-    "longname": "src/helper/InquirerHelper.js",
-    "access": null,
-    "description": null,
-    "lineNumber": 1,
-    "content": "'use strict';\nexport default class InquirerHelper{\n  constructor(){\n    this.inquirer = require('inquirer');\n  }\n\n  chooser(name, message, choices, cb){\n    return this.inquirer.prompt([\n      {\n        type: \"list\",\n        name: name,\n        message: message,\n        choices: choices\n      }\n    ], cb);\n  }\n}\n"
-  },
-  {
-    "kind": "class",
-    "static": true,
-    "variation": null,
-    "name": "InquirerHelper",
-    "memberof": "src/helper/InquirerHelper.js",
-    "longname": "src/helper/InquirerHelper.js~InquirerHelper",
-    "access": null,
-    "export": true,
-    "importPath": "relution-cli/src/helper/InquirerHelper.js",
-    "importStyle": "InquirerHelper",
-    "description": null,
-    "lineNumber": 2,
-    "undocument": true,
-    "interface": false
-  },
-  {
-    "kind": "constructor",
-    "static": false,
-    "variation": null,
-    "name": "constructor",
-    "memberof": "src/helper/InquirerHelper.js~InquirerHelper",
-    "longname": "src/helper/InquirerHelper.js~InquirerHelper#constructor",
-    "access": null,
-    "description": null,
-    "lineNumber": 3,
-    "undocument": true,
-    "params": [],
-    "generator": false
-  },
-  {
-    "kind": "member",
-    "static": false,
-    "variation": null,
-    "name": "inquirer",
-    "memberof": "src/helper/InquirerHelper.js~InquirerHelper",
-    "longname": "src/helper/InquirerHelper.js~InquirerHelper#inquirer",
-    "access": null,
-    "description": null,
-    "lineNumber": 4,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
     "kind": "method",
     "static": false,
     "variation": null,
-    "name": "chooser",
-    "memberof": "src/helper/InquirerHelper.js~InquirerHelper",
-    "longname": "src/helper/InquirerHelper.js~InquirerHelper#chooser",
+    "name": "generateZip",
+    "memberof": "src/helper/archiver-html5.js~Archiver",
+    "longname": "src/helper/archiver-html5.js~Archiver#generateZip",
     "access": null,
     "description": null,
-    "lineNumber": 7,
+    "lineNumber": 55,
     "undocument": true,
     "params": [
       {
-        "name": "name",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "message",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "choices",
-        "types": [
-          "*"
-        ]
-      },
-      {
-        "name": "cb",
+        "name": "path",
         "types": [
           "*"
         ]
@@ -1507,8 +1926,8 @@
     "longname": "src/helper/html5-project.js",
     "access": null,
     "description": null,
-    "lineNumber": 1,
-    "content": "var fs = require('fs');\n\nexport default class Html5Project {\n  constructor(prefix) {\n    //relution\n    this.prefix = prefix;\n    //relution.json\n    this.projectConf = null;\n    //console.log(process.env);\n  }\n\n  isProject(){\n    //${this.prefix}\n    let path = `${process.env.PWD}/app.rln`;\n    let self = this;\n    return new Promise((resolve, reject) => {\n      return fs.access(path, fs.R_OK | fs.W_OK, function(err) {\n        if(err){\n          //console.error(\"can't write\");\n          return reject(false);\n        }\n        return fs.readFile(path, 'utf8', function (err, data) {\n          if (err) {\n            //console.error(\"can't read\", err);\n            return reject(false);\n          }\n          self.projectConf = JSON.parse(data);\n          //console.log(self.projectConf);\n          return resolve(self.projectConf);\n        });\n      });\n    });\n  }\n}\n"
+    "lineNumber": 22,
+    "content": "/**\n * Created by pascalbrewing on 22/09/15\n * Copyright (c)\n * 2015\n * M-Way Solutions GmbH. All rights reserved.\n * http://www.mwaysolutions.com\n * Redistribution and use in source and binary forms, with or without\n * modification, are not permitted.\n * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\n * \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT\n * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS\n * FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE\n * COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,\n * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES INCLUDING,\n * BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;\n * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\n * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT\n * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN\n * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE\n * POSSIBILITY OF SUCH DAMAGE.\n */\n'use strict';\n\nvar fs = require('fs');\n\nexport default class Html5Project {\n  constructor(prefix) {\n    //relution\n    this.prefix = prefix;\n    //relution.json\n    this.projectConf = null;\n    //console.log(process.env);\n  }\n\n  isProject(){\n    //${this.prefix}\n    let path = `${process.env.PWD}/app.rln`;\n    let self = this;\n    return new Promise((resolve, reject) => {\n      return fs.access(path, fs.R_OK | fs.W_OK, function(err) {\n        if(err){\n          console.error(\"can't write\");\n          return reject(false);\n        }\n        return fs.readFile(path, 'utf8', function (err, data) {\n          if (err) {\n            //console.error(\"can't read\", err);\n            return reject(false);\n          }\n          self.projectConf = JSON.parse(data);\n          //console.log(self.projectConf);\n          return resolve(self.projectConf);\n        });\n      });\n    });\n  }\n}\n"
   },
   {
     "kind": "variable",
@@ -1522,7 +1941,7 @@
     "importPath": "relution-cli/src/helper/html5-project.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 1,
+    "lineNumber": 24,
     "undocument": true,
     "type": {
       "types": [
@@ -1542,7 +1961,7 @@
     "importPath": "relution-cli/src/helper/html5-project.js",
     "importStyle": "Html5Project",
     "description": null,
-    "lineNumber": 3,
+    "lineNumber": 26,
     "undocument": true,
     "interface": false
   },
@@ -1555,7 +1974,7 @@
     "longname": "src/helper/html5-project.js~Html5Project#constructor",
     "access": null,
     "description": null,
-    "lineNumber": 4,
+    "lineNumber": 27,
     "undocument": true,
     "params": [
       {
@@ -1576,7 +1995,7 @@
     "longname": "src/helper/html5-project.js~Html5Project#prefix",
     "access": null,
     "description": null,
-    "lineNumber": 6,
+    "lineNumber": 29,
     "undocument": true,
     "type": {
       "types": [
@@ -1593,7 +2012,7 @@
     "longname": "src/helper/html5-project.js~Html5Project#projectConf",
     "access": null,
     "description": null,
-    "lineNumber": 8,
+    "lineNumber": 31,
     "undocument": true,
     "type": {
       "types": [
@@ -1610,7 +2029,7 @@
     "longname": "src/helper/html5-project.js~Html5Project#isProject",
     "access": null,
     "description": null,
-    "lineNumber": 12,
+    "lineNumber": 35,
     "undocument": true,
     "params": [],
     "return": {
@@ -1629,8 +2048,8 @@
     "longname": "src/helper/project.js",
     "access": null,
     "description": null,
-    "lineNumber": 1,
-    "content": "var fs = require('fs');\n\nexport default class Project {\n  constructor(prefix) {\n    //relution\n    this.prefix = prefix;\n    //relution.json\n    this.projectConf = null;\n    //console.log(process.env);\n  }\n\n  isProject(){\n    let path = `${process.env.PWD}/${this.prefix}.json`;\n    let self = this;\n    return new Promise((resolve, reject) => {\n      return fs.access(path, fs.R_OK | fs.W_OK, function(err) {\n        if(err){\n          //console.error(\"can't write\");\n          return reject(false);\n        }\n        return fs.readFile(path, 'utf8', function (err, data) {\n          if (err) {\n            //console.error(\"can't read\", err);\n            return reject(false);\n          }\n          self.projectConf = JSON.parse(data);\n          return resolve(self.projectConf);\n        });\n      });\n    });\n  }\n}\n"
+    "lineNumber": 22,
+    "content": "/**\n * Created by pascalbrewing on 22/09/15\n * Copyright (c)\n * 2015\n * M-Way Solutions GmbH. All rights reserved.\n * http://www.mwaysolutions.com\n * Redistribution and use in source and binary forms, with or without\n * modification, are not permitted.\n * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\n * \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT\n * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS\n * FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE\n * COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,\n * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES INCLUDING,\n * BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;\n * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\n * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT\n * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN\n * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE\n * POSSIBILITY OF SUCH DAMAGE.\n */\n'use strict';\n\nvar fs = require('fs');\n\nexport default class Project {\n  constructor(prefix) {\n    //relution\n    this.prefix = prefix;\n    //relution.json\n    this.projectConf = null;\n    //console.log(process.env);\n  }\n\n  isProject(){\n    let path = `${process.env.PWD}/${this.prefix}.json`;\n    let self = this;\n    return new Promise((resolve, reject) => {\n      return fs.access(path, fs.R_OK | fs.W_OK, function(err) {\n        if(err){\n          //console.error(\"can't write\");\n          return reject(false);\n        }\n        return fs.readFile(path, 'utf8', function (err, data) {\n          if (err) {\n            //console.error(\"can't read\", err);\n            return reject(false);\n          }\n          self.projectConf = JSON.parse(data);\n          return resolve(self.projectConf);\n        });\n      });\n    });\n  }\n}\n"
   },
   {
     "kind": "variable",
@@ -1644,7 +2063,7 @@
     "importPath": "relution-cli/src/helper/project.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 1,
+    "lineNumber": 24,
     "undocument": true,
     "type": {
       "types": [
@@ -1664,7 +2083,7 @@
     "importPath": "relution-cli/src/helper/project.js",
     "importStyle": "Project",
     "description": null,
-    "lineNumber": 3,
+    "lineNumber": 26,
     "undocument": true,
     "interface": false
   },
@@ -1677,7 +2096,7 @@
     "longname": "src/helper/project.js~Project#constructor",
     "access": null,
     "description": null,
-    "lineNumber": 4,
+    "lineNumber": 27,
     "undocument": true,
     "params": [
       {
@@ -1698,7 +2117,7 @@
     "longname": "src/helper/project.js~Project#prefix",
     "access": null,
     "description": null,
-    "lineNumber": 6,
+    "lineNumber": 29,
     "undocument": true,
     "type": {
       "types": [
@@ -1715,7 +2134,7 @@
     "longname": "src/helper/project.js~Project#projectConf",
     "access": null,
     "description": null,
-    "lineNumber": 8,
+    "lineNumber": 31,
     "undocument": true,
     "type": {
       "types": [
@@ -1732,7 +2151,7 @@
     "longname": "src/helper/project.js~Project#isProject",
     "access": null,
     "description": null,
-    "lineNumber": 12,
+    "lineNumber": 35,
     "undocument": true,
     "params": [],
     "return": {
@@ -1751,8 +2170,8 @@
     "longname": "src/helper/relution.js",
     "access": null,
     "description": null,
-    "lineNumber": 1,
-    "content": "var fs = require('fs');\nconst NATIVE = 'native';\nconst HTML5CONTAINER = 'html5';\nimport Project from './project';\nimport Html5Project from './html5-project';\n\nexport default class RelutionCli {\n\n  constructor(appPrefix = 'relution', debug=true) {\n    this.appPrefix = appPrefix;\n    this.rcConf = null;\n    this.projectConf = null;\n    this.rcFilePath = `${this.getUserHome()}/.${this.appPrefix}rc`;\n    this.project = null;\n    this.isProject = false;\n    this.html5Project = null;\n    this.projectType = '';\n    //this.setProject();\n    //this.setHtml5Project();\n    this.rcFileExist();\n  }\n\n  getRcFilePath(){\n    return this.rcFilePath;\n  }\n\n  rcFileExist(){\n    var self = this;\n    fs.exists(this.rcFilePath, function (exists) {\n      if (!exists) {\n        return self.createRcFile();\n      }\n      console.log(`${self.rcFilePath} available` )\n    });\n  }\n\n  getProjectType () {\n    //var promise = new Promise();\n    return Promise.all([this.setProject, this.setHtml5Project()]);\n  }\n\n  setProject(){\n    this.project = new Project(this.appPrefix);\n    return this.project.isProject().then((result) => {\n      if (typeof result === 'object') {\n        this.isProject = true;\n        this.projectConf = result;\n        return this.projectType = 'native';\n        //console.log(result);\n      }\n    }).catch(function () {\n      console.log(`looks not a ${NATIVE} project`);\n    });\n  }\n\n  setHtml5Project(){\n    this.html5Project = new Html5Project(this.appPrefix);\n    var self = this;\n    return this.html5Project.isProject().then((result) => {\n      if (typeof result === 'object') {\n        self.isProject = true;\n        self.projectConf = result;\n        return self.projectType = 'html5';\n        //console.log(result);\n      }\n    }).catch(function () {\n      console.log(`looks not a ${HTML5CONTAINER} project`);\n    });\n  }\n\n  getUserHome() {\n    return process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'];\n  }\n\n  streamRc() {\n    let self = this;\n    return new Promise((resolve, reject) => {\n      return fs.access(self.rcFilePath, fs.R_OK | fs.W_OK, function(err) {\n        return fs.readFile(self.rcFilePath, 'utf8', function (err, data) {\n          if (err) {\n\n            return reject(err);\n          }\n          self.rcConf = JSON.parse(data);\n          return resolve(self.rcConf);\n        });\n      });\n    }, (this));\n  }\n\n  createRcFile() {\n    let self = this;\n    return new Promise((resolve, reject) => {\n      return fs.access(self.rcFilePath, fs.R_OK | fs.W_OK, function(err) {\n        if (err) {\n          reject(err);\n        }\n        return fs.writeFile(self.rcFilePath, {encoding: 'utf8', mode: 755}, function (err) {\n          if (err) {\n            reject(err);\n          }\n          console.log('rc file are written');\n          return resolve(true);\n        });\n      });\n    }, (this));\n  }\n\n  updateRcFile(content){\n    var self = this;\n    return new Promise((resolve, reject) => {\n      return fs.writeFile(self.rcFilePath, JSON.stringify(content), function (err) {\n        if (err) reject(err);\n        console.log('It\\'s saved!');\n        return resolve(true);\n      });\n    });\n  }\n}\n"
+    "lineNumber": 22,
+    "content": "/**\n * Created by pascalbrewing on 22/09/15\n * Copyright (c)\n * 2015\n * M-Way Solutions GmbH. All rights reserved.\n * http://www.mwaysolutions.com\n * Redistribution and use in source and binary forms, with or without\n * modification, are not permitted.\n * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\n * \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT\n * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS\n * FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE\n * COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,\n * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES INCLUDING,\n * BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;\n * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER\n * CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT\n * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN\n * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE\n * POSSIBILITY OF SUCH DAMAGE.\n */\n'use strict';\n\nvar fs = require('fs');\nconst NATIVE = 'native';\nconst HTML5CONTAINER = 'html5';\nimport Project from './project';\nimport Html5Project from './html5-project';\n\nexport default class RelutionCli {\n\n  constructor(appPrefix = 'relution', debug=true) {\n    this.appPrefix = appPrefix;\n    this.rcConf = null;\n    this.projectConf = null;\n    this.rcFilePath = `${this.getUserHome()}/.${this.appPrefix}rc`;\n    this.project = null;\n    this.isProject = false;\n    this.html5Project = null;\n    this.projectType = '';\n    //this.setProject();\n    //this.setHtml5Project();\n    this.rcFileExist();\n  }\n\n  getRcFilePath(){\n    return this.rcFilePath;\n  }\n\n  rcFileExist(){\n    var self = this;\n    fs.exists(this.rcFilePath, function (exists) {\n      if (!exists) {\n        return self.createRcFile();\n      }\n      console.log(`${self.rcFilePath} available` )\n    });\n  }\n\n  getProjectType () {\n    //var promise = new Promise();\n    return Promise.all([this.setProject, this.setHtml5Project()]);\n  }\n\n  setProject(){\n    this.project = new Project(this.appPrefix);\n    return this.project.isProject().then((result) => {\n      if (typeof result === 'object') {\n        this.isProject = true;\n        this.projectConf = result;\n        return this.projectType = 'native';\n        //console.log(result);\n      }\n    }).catch(function () {\n      console.log(`looks not a ${NATIVE} project`);\n    });\n  }\n\n  setHtml5Project(){\n    this.html5Project = new Html5Project(this.appPrefix);\n    var self = this;\n    return this.html5Project.isProject().then((result) => {\n      if (typeof result === 'object') {\n        self.isProject = true;\n        self.projectConf = result;\n        return self.projectType = 'html5';\n        //console.log(result);\n      }\n    }).catch(function () {\n      console.log(`looks not a ${HTML5CONTAINER} project`);\n    });\n  }\n\n  getUserHome() {\n    return process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'];\n  }\n\n  streamRc() {\n    let self = this;\n    return new Promise((resolve, reject) => {\n      return fs.access(self.rcFilePath, fs.R_OK | fs.W_OK, function(err) {\n        return fs.readFile(self.rcFilePath, 'utf8', function (err, data) {\n          if (err) {\n\n            return reject(err);\n          }\n          self.rcConf = JSON.parse(data);\n          return resolve(self.rcConf);\n        });\n      });\n    }, (this));\n  }\n\n  createRcFile() {\n    let self = this;\n    return new Promise((resolve, reject) => {\n      return fs.access(self.rcFilePath, fs.R_OK | fs.W_OK, function(err) {\n        if (err) {\n          reject(err);\n        }\n        return fs.writeFile(self.rcFilePath, {encoding: 'utf8', mode: 755}, function (err) {\n          if (err) {\n            reject(err);\n          }\n          console.log('rc file are written');\n          return resolve(true);\n        });\n      });\n    }, (this));\n  }\n\n  updateRcFile(content){\n    var self = this;\n    return new Promise((resolve, reject) => {\n      return fs.writeFile(self.rcFilePath, JSON.stringify(content), function (err) {\n        if (err) reject(err);\n        console.log('It\\'s saved!');\n        return resolve(true);\n      });\n    });\n  }\n}\n"
   },
   {
     "kind": "variable",
@@ -1766,7 +2185,7 @@
     "importPath": "relution-cli/src/helper/relution.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 1,
+    "lineNumber": 24,
     "undocument": true,
     "type": {
       "types": [
@@ -1786,7 +2205,7 @@
     "importPath": "relution-cli/src/helper/relution.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 2,
+    "lineNumber": 25,
     "undocument": true,
     "type": {
       "types": [
@@ -1806,7 +2225,7 @@
     "importPath": "relution-cli/src/helper/relution.js",
     "importStyle": null,
     "description": null,
-    "lineNumber": 3,
+    "lineNumber": 26,
     "undocument": true,
     "type": {
       "types": [
@@ -1826,7 +2245,7 @@
     "importPath": "relution-cli/src/helper/relution.js",
     "importStyle": "RelutionCli",
     "description": null,
-    "lineNumber": 7,
+    "lineNumber": 30,
     "undocument": true,
     "interface": false
   },
@@ -1839,7 +2258,7 @@
     "longname": "src/helper/relution.js~RelutionCli#constructor",
     "access": null,
     "description": null,
-    "lineNumber": 9,
+    "lineNumber": 32,
     "undocument": true,
     "params": [
       {
@@ -1872,7 +2291,7 @@
     "longname": "src/helper/relution.js~RelutionCli#appPrefix",
     "access": null,
     "description": null,
-    "lineNumber": 10,
+    "lineNumber": 33,
     "undocument": true,
     "type": {
       "types": [
@@ -1889,7 +2308,7 @@
     "longname": "src/helper/relution.js~RelutionCli#rcConf",
     "access": null,
     "description": null,
-    "lineNumber": 11,
+    "lineNumber": 34,
     "undocument": true,
     "type": {
       "types": [
@@ -1906,7 +2325,7 @@
     "longname": "src/helper/relution.js~RelutionCli#projectConf",
     "access": null,
     "description": null,
-    "lineNumber": 12,
+    "lineNumber": 35,
     "undocument": true,
     "type": {
       "types": [
@@ -1923,7 +2342,7 @@
     "longname": "src/helper/relution.js~RelutionCli#rcFilePath",
     "access": null,
     "description": null,
-    "lineNumber": 13,
+    "lineNumber": 36,
     "undocument": true,
     "type": {
       "types": [
@@ -1940,7 +2359,7 @@
     "longname": "src/helper/relution.js~RelutionCli#project",
     "access": null,
     "description": null,
-    "lineNumber": 14,
+    "lineNumber": 37,
     "undocument": true,
     "type": {
       "types": [
@@ -1957,7 +2376,7 @@
     "longname": "src/helper/relution.js~RelutionCli#isProject",
     "access": null,
     "description": null,
-    "lineNumber": 15,
+    "lineNumber": 38,
     "undocument": true,
     "type": {
       "types": [
@@ -1974,7 +2393,7 @@
     "longname": "src/helper/relution.js~RelutionCli#html5Project",
     "access": null,
     "description": null,
-    "lineNumber": 16,
+    "lineNumber": 39,
     "undocument": true,
     "type": {
       "types": [
@@ -1991,7 +2410,7 @@
     "longname": "src/helper/relution.js~RelutionCli#projectType",
     "access": null,
     "description": null,
-    "lineNumber": 17,
+    "lineNumber": 40,
     "undocument": true,
     "type": {
       "types": [
@@ -2008,7 +2427,7 @@
     "longname": "src/helper/relution.js~RelutionCli#getRcFilePath",
     "access": null,
     "description": null,
-    "lineNumber": 23,
+    "lineNumber": 46,
     "undocument": true,
     "params": [],
     "return": {
@@ -2027,7 +2446,7 @@
     "longname": "src/helper/relution.js~RelutionCli#rcFileExist",
     "access": null,
     "description": null,
-    "lineNumber": 27,
+    "lineNumber": 50,
     "undocument": true,
     "params": [],
     "generator": false
@@ -2041,7 +2460,7 @@
     "longname": "src/helper/relution.js~RelutionCli#getProjectType",
     "access": null,
     "description": null,
-    "lineNumber": 37,
+    "lineNumber": 60,
     "undocument": true,
     "params": [],
     "return": {
@@ -2060,7 +2479,7 @@
     "longname": "src/helper/relution.js~RelutionCli#setProject",
     "access": null,
     "description": null,
-    "lineNumber": 42,
+    "lineNumber": 65,
     "undocument": true,
     "params": [],
     "return": {
@@ -2079,7 +2498,7 @@
     "longname": "src/helper/relution.js~RelutionCli#project",
     "access": null,
     "description": null,
-    "lineNumber": 43,
+    "lineNumber": 66,
     "undocument": true,
     "type": {
       "types": [
@@ -2096,7 +2515,7 @@
     "longname": "src/helper/relution.js~RelutionCli#isProject",
     "access": null,
     "description": null,
-    "lineNumber": 46,
+    "lineNumber": 69,
     "undocument": true,
     "type": {
       "types": [
@@ -2113,7 +2532,7 @@
     "longname": "src/helper/relution.js~RelutionCli#projectConf",
     "access": null,
     "description": null,
-    "lineNumber": 47,
+    "lineNumber": 70,
     "undocument": true,
     "type": {
       "types": [
@@ -2130,7 +2549,7 @@
     "longname": "src/helper/relution.js~RelutionCli#setHtml5Project",
     "access": null,
     "description": null,
-    "lineNumber": 56,
+    "lineNumber": 79,
     "undocument": true,
     "params": [],
     "return": {
@@ -2149,7 +2568,7 @@
     "longname": "src/helper/relution.js~RelutionCli#html5Project",
     "access": null,
     "description": null,
-    "lineNumber": 57,
+    "lineNumber": 80,
     "undocument": true,
     "type": {
       "types": [
@@ -2166,7 +2585,7 @@
     "longname": "src/helper/relution.js~RelutionCli#getUserHome",
     "access": null,
     "description": null,
-    "lineNumber": 71,
+    "lineNumber": 94,
     "undocument": true,
     "params": [],
     "return": {
@@ -2185,7 +2604,7 @@
     "longname": "src/helper/relution.js~RelutionCli#streamRc",
     "access": null,
     "description": null,
-    "lineNumber": 75,
+    "lineNumber": 98,
     "undocument": true,
     "params": [],
     "return": {
@@ -2204,7 +2623,7 @@
     "longname": "src/helper/relution.js~RelutionCli#createRcFile",
     "access": null,
     "description": null,
-    "lineNumber": 91,
+    "lineNumber": 114,
     "undocument": true,
     "params": [],
     "return": {
@@ -2223,7 +2642,7 @@
     "longname": "src/helper/relution.js~RelutionCli#updateRcFile",
     "access": null,
     "description": null,
-    "lineNumber": 109,
+    "lineNumber": 132,
     "undocument": true,
     "params": [
       {
@@ -2351,38 +2770,6 @@
       ]
     },
     "generator": false
-  },
-  {
-    "kind": "file",
-    "static": true,
-    "variation": null,
-    "name": "src/helper/tree.js",
-    "memberof": null,
-    "longname": "src/helper/tree.js",
-    "access": null,
-    "description": null,
-    "lineNumber": 66,
-    "content": "//var blessed = require('blessed')\n//  , contrib = require('blessed-contrib')\n//  , screen = blessed.screen();\n//\n//var grid = new contrib.grid({rows: 12, cols: 12, screen: screen});\n//var tree = grid.set(0, 4, 4, 4, contrib.tree, {label: 'Commands'});\n//\n////allow control the table with the keyboard\n//tree.focus();\n//var log = grid.set(0, 8, 4, 4, contrib.log,\n//  {\n//    label: 'Server Log'\n//  });\n//\n//log.log(\"new log line\")\n//tree.on('select', function (node) {\n//  let keys = Object.keys(node)\n//  keys.forEach((key) => {\n//    log.log(key);\n//  });\n//\n//  //if (node.myCustomProperty){\n//  //  log.log(node.myCustomProperty);\n//  //}\n//\n//  //console.log(node);\n//});\n//\n//// you can specify a name property at root level to display root\n//tree.setData(\n//  {\n//    name: 'Commands',\n//    extended: false,\n//    children: {\n//      'Server': {\n//        name:'server1',\n//        children: {\n//          'serveradd': {\n//            'name': 'add'\n//          },\n//          'serveremove': {\n//            'name':'remove'\n//          }\n//        }\n//      },\n//      'Server2': {\n//        children: {\n//          'serveradd2': {\n//            'name': 'add'\n//          },\n//          'remove2': {\n//            'name':'remove'\n//          }\n//        }\n//      }\n//    }\n//\n//  })\n//\n//screen.key(['escape', 'q', 'C-c'], function (ch, key) {\n//  return process.exit(0);\n//});\n//\n//\n//screen.render();\nvar readline = require('readline'),\n  rl = readline.createInterface(process.stdin, process.stdout);\n\nrl.setPrompt('relution> ');\nrl.prompt();\n\nrl.on('line', function(line) {\n  switch(line.trim()) {\n    case 'hello':\n      console.log('world!');\n      break;\n    default:\n      console.log('Say what? I might have heard `' + line.trim() + '`');\n      break;\n  }\n  rl.prompt();\n}).on('close', function() {\n  console.log('Have a great day!');\n  process.exit(0);\n});\n"
-  },
-  {
-    "kind": "variable",
-    "static": true,
-    "variation": null,
-    "name": "readline",
-    "memberof": "src/helper/tree.js",
-    "longname": "src/helper/tree.js~readline",
-    "access": null,
-    "export": false,
-    "importPath": "relution-cli/src/helper/tree.js",
-    "importStyle": null,
-    "description": null,
-    "lineNumber": 66,
-    "undocument": true,
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
   },
   {
     "kind": "file",

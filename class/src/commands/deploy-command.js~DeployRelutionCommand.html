@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../../">
-  <title data-ice="title">Tower | API Document</title>
+  <title data-ice="title">DeployRelutionCommand | API Document</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -46,23 +46,23 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import Tower from &apos;<span><a href="file/src/commands/tower.js.html#lineNumber31">relution-cli/src/commands/tower.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import DeployRelutionCommand from &apos;<span><a href="file/src/commands/deploy-command.js.html#lineNumber39">relution-cli/src/commands/deploy-command.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/commands/tower.js.html#lineNumber31">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/commands/deploy-command.js.html#lineNumber39">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
-  <h1 data-ice="name">Tower</h1>
+  <h1 data-ice="name">DeployRelutionCommand</h1>
 
   
 
   
   
-  
+  <div class="flat-list" data-ice="extendsChain"><h4>Extends:</h4><div><span>src/commands/command~Command</span> &#x2192; DeployRelutionCommand</div></div>
   
   
   
@@ -72,7 +72,9 @@
 
   
   
-  
+  <div class="description" data-ice="description"><p>DeployRelutionCommand
+generate a zip from the www folder create a zip and upload it to relution</p>
+</div>
 
   
 
@@ -100,7 +102,7 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/commands/tower.js~Tower.html#instance-constructor-constructor">constructor</a></span></span><span data-ice="signature">(commands: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span><span>[]</span></span>)</span>
+           <span data-ice="name"><span><a href="class/src/commands/deploy-command.js~DeployRelutionCommand.html#instance-constructor-constructor">constructor</a></span></span>
         </p>
       </div>
       <div>
@@ -132,7 +134,7 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/commands/tower.js~Tower.html#instance-member-commands">commands</a></span></span><span data-ice="signature">: <span>*</span></span>
+           <span data-ice="name"><span><a href="class/src/commands/deploy-command.js~DeployRelutionCommand.html#instance-member-deployUrl">deployUrl</a></span></span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
         </p>
       </div>
       <div>
@@ -157,7 +159,7 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/commands/tower.js~Tower.html#instance-member-i18n">i18n</a></span></span><span data-ice="signature">: <span>*</span></span>
+           <span data-ice="name"><span><a href="class/src/commands/deploy-command.js~DeployRelutionCommand.html#instance-member-projectRln">projectRln</a></span></span><span data-ice="signature">: <span>*</span></span>
         </p>
       </div>
       <div>
@@ -182,7 +184,7 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/commands/tower.js~Tower.html#instance-member-inquirer">inquirer</a></span></span><span data-ice="signature">: <span>*</span></span>
+           <span data-ice="name"><span><a href="class/src/commands/deploy-command.js~DeployRelutionCommand.html#instance-member-sessionId">sessionId</a></span></span><span data-ice="signature">: <span>*</span></span>
         </p>
       </div>
       <div>
@@ -207,7 +209,7 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/commands/tower.js~Tower.html#instance-member-startCommands">startCommands</a></span></span><span data-ice="signature">: <span>*</span></span>
+           <span data-ice="name"><span><a href="class/src/commands/deploy-command.js~DeployRelutionCommand.html#instance-member-sessionResponse">sessionResponse</a></span></span><span data-ice="signature">: <span>*</span></span>
         </p>
       </div>
       <div>
@@ -232,7 +234,32 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/commands/tower.js~Tower.html#instance-member-tree">tree</a></span></span><span data-ice="signature">: <span>*</span></span>
+           <span data-ice="name"><span><a href="class/src/commands/deploy-command.js~DeployRelutionCommand.html#instance-member-tower">tower</a></span></span><span data-ice="signature">: <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/src/commands/deploy-command.js~DeployRelutionCommand.html#instance-member-userForm">userForm</a></span></span><span data-ice="signature">: <span>*</span></span>
         </p>
       </div>
       <div>
@@ -264,7 +291,7 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/commands/tower.js~Tower.html#instance-method-commandCallback">commandCallback</a></span></span><span data-ice="signature">(answers: <span>*</span>)</span>
+           <span data-ice="name"><span><a href="class/src/commands/deploy-command.js~DeployRelutionCommand.html#instance-method-authenticateOnRelution">authenticateOnRelution</a></span></span><span data-ice="signature">(answers: <span>*</span>)</span>
         </p>
       </div>
       <div>
@@ -289,7 +316,7 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/commands/tower.js~Tower.html#instance-method-getCommandsByType">getCommandsByType</a></span></span><span data-ice="signature">(type: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/src/commands/deploy-command.js~DeployRelutionCommand.html#instance-method-createAppOnServer">createAppOnServer</a></span></span><span data-ice="signature">(uuid: <span>*</span>, data: <span>*</span>, self: <span>*</span>)</span>
         </p>
       </div>
       <div>
@@ -314,7 +341,7 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/commands/tower.js~Tower.html#instance-method-getStartCommands">getStartCommands</a></span></span><span data-ice="signature">(commands: <span>*</span>): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/src/commands/deploy-command.js~DeployRelutionCommand.html#instance-method-deploy">deploy</a></span></span><span data-ice="signature">(inquirer: <span>*</span>, tower: <span>*</span>): <span>*</span></span>
         </p>
       </div>
       <div>
@@ -339,7 +366,7 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/commands/tower.js~Tower.html#instance-method-registerCommand">registerCommand</a></span></span><span data-ice="signature">(command: <span>*</span>)</span>
+           <span data-ice="name"><span><a href="class/src/commands/deploy-command.js~DeployRelutionCommand.html#instance-method-getAppMetadata">getAppMetadata</a></span></span><span data-ice="signature">(uuid: <span>*</span>, self: <span>*</span>)</span>
         </p>
       </div>
       <div>
@@ -364,7 +391,7 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/commands/tower.js~Tower.html#instance-method-showCommands">showCommands</a></span></span><span data-ice="signature">(name: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, message: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, commands: <span>*</span>): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/src/commands/deploy-command.js~DeployRelutionCommand.html#instance-method-getJSESSIONID">getJSESSIONID</a></span></span><span data-ice="signature">(cookie: <span>*</span>): <span>*</span></span>
         </p>
       </div>
       <div>
@@ -389,7 +416,7 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/commands/tower.js~Tower.html#instance-method-triggerCommand">triggerCommand</a></span></span><span data-ice="signature">(name: <span>*</span>, method: <span>*</span>): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/src/commands/deploy-command.js~DeployRelutionCommand.html#instance-method-getServerByName">getServerByName</a></span></span><span data-ice="signature">(name: <span>*</span>): <span>*</span></span>
         </p>
       </div>
       <div>
@@ -414,7 +441,57 @@
     <td>
       <div>
         <p>
-           <span data-ice="name"><span><a href="class/src/commands/tower.js~Tower.html#instance-method-triggerSubCommand">triggerSubCommand</a></span></span><span data-ice="signature">(name: <span>*</span>, method: <span>*</span>): <span>*</span></span>
+           <span data-ice="name"><span><a href="class/src/commands/deploy-command.js~DeployRelutionCommand.html#instance-method-getServerNames">getServerNames</a></span></span><span data-ice="signature">(): <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/src/commands/deploy-command.js~DeployRelutionCommand.html#instance-method-prepareUrl">prepareUrl</a></span></span><span data-ice="signature">(url: <span>*</span>): <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+           <span data-ice="name"><span><a href="class/src/commands/deploy-command.js~DeployRelutionCommand.html#instance-method-uploadZip">uploadZip</a></span></span><span data-ice="signature">(path: <span>*</span>, self: <span>*</span>)</span>
         </p>
       </div>
       <div>
@@ -445,11 +522,11 @@
     
     
     
-    <span data-ice="name">constructor</span><span data-ice="signature">(commands: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span><span>[]</span></span>)</span>
+    <span data-ice="name">constructor</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/commands/tower.js.html#lineNumber33">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/commands/deploy-command.js.html#lineNumber41">source</a></span></span>
     </span>
   </h3>
 
@@ -460,24 +537,7 @@
 
   
 
-  <div data-ice="properties"><div data-ice="properties">
-  <h4 data-ice="title">Params:</h4>
-  <table class="params">
-    <thead>
-    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-    
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">commands</td>
-      <td data-ice="type"><span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span><span>[]</span></span></td>
-      <td data-ice="appendix"><ul><li>optional</li>
-<li>default: [null,null]</li></ul></td>
-      <td data-ice="description"></td>
-    </tr>
-</tbody>
-  </table>
-</div>
+  <div data-ice="properties">
 </div>
 
   
@@ -499,17 +559,17 @@
 <div data-ice="memberDetails"><h2 data-ice="title">Public Members</h2>
 
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-member-commands">
+  <h3 data-ice="anchor" id="instance-member-deployUrl">
     <span class="access" data-ice="access">public</span>
     
     
     
     
-    <span data-ice="name">commands</span><span data-ice="signature">: <span>*</span></span>
+    <span data-ice="name">deployUrl</span><span data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/commands/tower.js.html#lineNumber35">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/commands/deploy-command.js.html#lineNumber52">source</a></span></span>
     </span>
   </h3>
 
@@ -539,17 +599,17 @@
   
 </div>
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-member-i18n">
+  <h3 data-ice="anchor" id="instance-member-projectRln">
     <span class="access" data-ice="access">public</span>
     
     
     
     
-    <span data-ice="name">i18n</span><span data-ice="signature">: <span>*</span></span>
+    <span data-ice="name">projectRln</span><span data-ice="signature">: <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/commands/tower.js.html#lineNumber34">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/commands/deploy-command.js.html#lineNumber50">source</a></span></span>
     </span>
   </h3>
 
@@ -579,17 +639,17 @@
   
 </div>
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-member-inquirer">
+  <h3 data-ice="anchor" id="instance-member-sessionId">
     <span class="access" data-ice="access">public</span>
     
     
     
     
-    <span data-ice="name">inquirer</span><span data-ice="signature">: <span>*</span></span>
+    <span data-ice="name">sessionId</span><span data-ice="signature">: <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/commands/tower.js.html#lineNumber38">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/commands/deploy-command.js.html#lineNumber51">source</a></span></span>
     </span>
   </h3>
 
@@ -619,17 +679,17 @@
   
 </div>
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-member-startCommands">
+  <h3 data-ice="anchor" id="instance-member-sessionResponse">
     <span class="access" data-ice="access">public</span>
     
     
     
     
-    <span data-ice="name">startCommands</span><span data-ice="signature">: <span>*</span></span>
+    <span data-ice="name">sessionResponse</span><span data-ice="signature">: <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/commands/tower.js.html#lineNumber37">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/commands/deploy-command.js.html#lineNumber54">source</a></span></span>
     </span>
   </h3>
 
@@ -659,17 +719,57 @@
   
 </div>
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-member-tree">
+  <h3 data-ice="anchor" id="instance-member-tower">
     <span class="access" data-ice="access">public</span>
     
     
     
     
-    <span data-ice="name">tree</span><span data-ice="signature">: <span>*</span></span>
+    <span data-ice="name">tower</span><span data-ice="signature">: <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/commands/tower.js.html#lineNumber36">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/commands/deploy-command.js.html#lineNumber86">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-userForm">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">userForm</span><span data-ice="signature">: <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/commands/deploy-command.js.html#lineNumber44">source</a></span></span>
     </span>
   </h3>
 
@@ -702,17 +802,17 @@
 <div data-ice="methodDetails"><h2 data-ice="title">Public Methods</h2>
 
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-commandCallback">
+  <h3 data-ice="anchor" id="instance-method-authenticateOnRelution">
     <span class="access" data-ice="access">public</span>
     
     
     
     
-    <span data-ice="name">commandCallback</span><span data-ice="signature">(answers: <span>*</span>)</span>
+    <span data-ice="name">authenticateOnRelution</span><span data-ice="signature">(answers: <span>*</span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/commands/tower.js.html#lineNumber92">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/commands/deploy-command.js.html#lineNumber116">source</a></span></span>
     </span>
   </h3>
 
@@ -758,17 +858,17 @@
   
 </div>
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-getCommandsByType">
+  <h3 data-ice="anchor" id="instance-method-createAppOnServer">
     <span class="access" data-ice="access">public</span>
     
     
     
     
-    <span data-ice="name">getCommandsByType</span><span data-ice="signature">(type: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span>*</span></span>
+    <span data-ice="name">createAppOnServer</span><span data-ice="signature">(uuid: <span>*</span>, data: <span>*</span>, self: <span>*</span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/commands/tower.js.html#lineNumber61">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/commands/deploy-command.js.html#lineNumber213">source</a></span></span>
     </span>
   </h3>
 
@@ -788,282 +888,81 @@
     <tbody>
     
     <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">type</td>
-      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
-      <td data-ice="appendix"><ul><li>optional</li>
-<li>default: native</li></ul></td>
-      <td data-ice="description"></td>
-    </tr>
-</tbody>
-  </table>
-</div>
-</div>
-
-  <div class="return-params" data-ice="returnParams">
-    <h4>Return:</h4>
-    <table>
-      <tr>
-        <td class="return-type" data-ice="returnType"><span>*</span></td>
-        
-      </tr>
-    </table>
-    <div data-ice="returnProperties">
-</div>
-  </div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-getStartCommands">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    
-    <span data-ice="name">getStartCommands</span><span data-ice="signature">(commands: <span>*</span>): <span>*</span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/commands/tower.js.html#lineNumber76">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  
-
-  
-
-  <div data-ice="properties"><div data-ice="properties">
-  <h4 data-ice="title">Params:</h4>
-  <table class="params">
-    <thead>
-    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-    
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">commands</td>
-      <td data-ice="type"><span>*</span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-</tbody>
-  </table>
-</div>
-</div>
-
-  <div class="return-params" data-ice="returnParams">
-    <h4>Return:</h4>
-    <table>
-      <tr>
-        <td class="return-type" data-ice="returnType"><span>*</span></td>
-        
-      </tr>
-    </table>
-    <div data-ice="returnProperties">
-</div>
-  </div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-registerCommand">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    
-    <span data-ice="name">registerCommand</span><span data-ice="signature">(command: <span>*</span>)</span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/commands/tower.js.html#lineNumber45">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  
-
-  
-
-  <div data-ice="properties"><div data-ice="properties">
-  <h4 data-ice="title">Params:</h4>
-  <table class="params">
-    <thead>
-    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-    
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">command</td>
-      <td data-ice="type"><span>*</span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-</tbody>
-  </table>
-</div>
-</div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-showCommands">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    
-    <span data-ice="name">showCommands</span><span data-ice="signature">(name: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, message: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, commands: <span>*</span>): <span>*</span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/commands/tower.js.html#lineNumber81">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  
-
-  
-
-  <div data-ice="properties"><div data-ice="properties">
-  <h4 data-ice="title">Params:</h4>
-  <table class="params">
-    <thead>
-    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-    
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">name</td>
-      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
-      <td data-ice="appendix"><ul><li>optional</li>
-<li>default: Start</li></ul></td>
-      <td data-ice="description"></td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">message</td>
-      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
-      <td data-ice="appendix"><ul><li>optional</li>
-<li>default: Please Choose Your Command</li></ul></td>
-      <td data-ice="description"></td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">commands</td>
-      <td data-ice="type"><span>*</span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-</tbody>
-  </table>
-</div>
-</div>
-
-  <div class="return-params" data-ice="returnParams">
-    <h4>Return:</h4>
-    <table>
-      <tr>
-        <td class="return-type" data-ice="returnType"><span>*</span></td>
-        
-      </tr>
-    </table>
-    <div data-ice="returnProperties">
-</div>
-  </div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-triggerCommand">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    
-    <span data-ice="name">triggerCommand</span><span data-ice="signature">(name: <span>*</span>, method: <span>*</span>): <span>*</span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/commands/tower.js.html#lineNumber51">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  
-
-  
-
-  <div data-ice="properties"><div data-ice="properties">
-  <h4 data-ice="title">Params:</h4>
-  <table class="params">
-    <thead>
-    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-    
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">name</td>
+      <td data-ice="name" data-depth="0">uuid</td>
       <td data-ice="type"><span>*</span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
 <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">method</td>
+      <td data-ice="name" data-depth="0">data</td>
+      <td data-ice="type"><span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">self</td>
+      <td data-ice="type"><span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-deploy">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">deploy</span><span data-ice="signature">(inquirer: <span>*</span>, tower: <span>*</span>): <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/commands/deploy-command.js.html#lineNumber85">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">inquirer</td>
+      <td data-ice="type"><span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">tower</td>
       <td data-ice="type"><span>*</span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
@@ -1099,17 +998,145 @@
   
 </div>
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-triggerSubCommand">
+  <h3 data-ice="anchor" id="instance-method-getAppMetadata">
     <span class="access" data-ice="access">public</span>
     
     
     
     
-    <span data-ice="name">triggerSubCommand</span><span data-ice="signature">(name: <span>*</span>, method: <span>*</span>): <span>*</span></span>
+    <span data-ice="name">getAppMetadata</span><span data-ice="signature">(uuid: <span>*</span>, self: <span>*</span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/commands/tower.js.html#lineNumber56">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/commands/deploy-command.js.html#lineNumber187">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">uuid</td>
+      <td data-ice="type"><span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">self</td>
+      <td data-ice="type"><span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-getJSESSIONID">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">getJSESSIONID</span><span data-ice="signature">(cookie: <span>*</span>): <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/commands/deploy-command.js.html#lineNumber73">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">cookie</td>
+      <td data-ice="type"><span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span>*</span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-getServerByName">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">getServerByName</span><span data-ice="signature">(name: <span>*</span>): <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/commands/deploy-command.js.html#lineNumber112">source</a></span></span>
     </span>
   </h3>
 
@@ -1134,8 +1161,118 @@
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">method</td>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span>*</span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-getServerNames">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">getServerNames</span><span data-ice="signature">(): <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/commands/deploy-command.js.html#lineNumber65">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tr>
+        <td class="return-type" data-ice="returnType"><span>*</span></td>
+        
+      </tr>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-prepareUrl">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">prepareUrl</span><span data-ice="signature">(url: <span>*</span>): <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/commands/deploy-command.js.html#lineNumber98">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">url</td>
       <td data-ice="type"><span>*</span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
@@ -1156,6 +1293,68 @@
     <div data-ice="returnProperties">
 </div>
   </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-uploadZip">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    <span data-ice="name">uploadZip</span><span data-ice="signature">(path: <span>*</span>, self: <span>*</span>)</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/commands/deploy-command.js.html#lineNumber164">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">path</td>
+      <td data-ice="type"><span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" data-depth="0">self</td>
+      <td data-ice="type"><span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  
 
   
 

@@ -1,5 +1,11 @@
 window.esdocSearchIndex = [
   [
+    "relution-cli/src/helper/archiver-html5.js~archiver",
+    "class/src/helper/archiver-html5.js~Archiver.html",
+    "<span>Archiver</span> <span class=\"search-result-import-path\">relution-cli/src/helper/archiver-html5.js</span>",
+    "class"
+  ],
+  [
     "relution-cli/src/cli.js~cli",
     "class/src/cli.js~Cli.html",
     "<span>Cli</span> <span class=\"search-result-import-path\">relution-cli/src/cli.js</span>",
@@ -12,15 +18,15 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "relution-cli/src/helper/html5-project.js~html5project",
-    "class/src/helper/html5-project.js~Html5Project.html",
-    "<span>Html5Project</span> <span class=\"search-result-import-path\">relution-cli/src/helper/html5-project.js</span>",
+    "relution-cli/src/commands/deploy-command.js~deployrelutioncommand",
+    "class/src/commands/deploy-command.js~DeployRelutionCommand.html",
+    "<span>DeployRelutionCommand</span> <span class=\"search-result-import-path\">relution-cli/src/commands/deploy-command.js</span>",
     "class"
   ],
   [
-    "relution-cli/src/helper/inquirerhelper.js~inquirerhelper",
-    "class/src/helper/InquirerHelper.js~InquirerHelper.html",
-    "<span>InquirerHelper</span> <span class=\"search-result-import-path\">relution-cli/src/helper/InquirerHelper.js</span>",
+    "relution-cli/src/helper/html5-project.js~html5project",
+    "class/src/helper/html5-project.js~Html5Project.html",
+    "<span>Html5Project</span> <span class=\"search-result-import-path\">relution-cli/src/helper/html5-project.js</span>",
     "class"
   ],
   [
@@ -42,12 +48,6 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "relution-cli/src/components/starttree.js~starttree",
-    "class/src/components/StartTree.js~StartTree.html",
-    "<span>StartTree</span> <span class=\"search-result-import-path\">relution-cli/src/components/StartTree.js</span>",
-    "class"
-  ],
-  [
     "relution-cli/src/commands/tower.js~tower",
     "class/src/commands/tower.js~Tower.html",
     "<span>Tower</span> <span class=\"search-result-import-path\">relution-cli/src/commands/tower.js</span>",
@@ -57,12 +57,6 @@ window.esdocSearchIndex = [
     "relution-cli/src/helper/translation.js~translate",
     "class/src/helper/translation.js~Translate.html",
     "<span>Translate</span> <span class=\"search-result-import-path\">relution-cli/src/helper/translation.js</span>",
-    "class"
-  ],
-  [
-    "relution-cli/src/components/tree.js~tree",
-    "class/src/components/Tree.js~Tree.html",
-    "<span>Tree</span> <span class=\"search-result-import-path\">relution-cli/src/components/Tree.js</span>",
     "class"
   ],
   [
@@ -468,6 +462,18 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/commands/command.es6~command#exit",
+    "class/src/commands/command.es6~Command.html#instance-method-exit",
+    "src/commands/command.es6~Command#exit",
+    "method"
+  ],
+  [
+    "src/commands/command.es6~command#flatcommands",
+    "class/src/commands/command.es6~Command.html#instance-method-flatCommands",
+    "src/commands/command.es6~Command#flatCommands",
+    "method"
+  ],
+  [
     "src/commands/command.es6~command#i18n",
     "class/src/commands/command.es6~Command.html#instance-member-i18n",
     "src/commands/command.es6~Command#i18n",
@@ -486,9 +492,123 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "src/commands/command.es6~command#start",
+    "class/src/commands/command.es6~Command.html#instance-method-start",
+    "src/commands/command.es6~Command#start",
+    "method"
+  ],
+  [
+    "src/commands/command.es6~command#tower",
+    "class/src/commands/command.es6~Command.html#instance-member-tower",
+    "src/commands/command.es6~Command#tower",
+    "member"
+  ],
+  [
     "src/commands/command.es6~command#validation",
     "class/src/commands/command.es6~Command.html#instance-member-validation",
     "src/commands/command.es6~Command#validation",
+    "member"
+  ],
+  [
+    "src/commands/deploy-command.js",
+    "file/src/commands/deploy-command.js.html",
+    "src/commands/deploy-command.js",
+    "file"
+  ],
+  [
+    "src/commands/deploy-command.js~deployrelutioncommand#authenticateonrelution",
+    "class/src/commands/deploy-command.js~DeployRelutionCommand.html#instance-method-authenticateOnRelution",
+    "src/commands/deploy-command.js~DeployRelutionCommand#authenticateOnRelution",
+    "method"
+  ],
+  [
+    "src/commands/deploy-command.js~deployrelutioncommand#constructor",
+    "class/src/commands/deploy-command.js~DeployRelutionCommand.html#instance-constructor-constructor",
+    "src/commands/deploy-command.js~DeployRelutionCommand#constructor",
+    "method"
+  ],
+  [
+    "src/commands/deploy-command.js~deployrelutioncommand#createapponserver",
+    "class/src/commands/deploy-command.js~DeployRelutionCommand.html#instance-method-createAppOnServer",
+    "src/commands/deploy-command.js~DeployRelutionCommand#createAppOnServer",
+    "method"
+  ],
+  [
+    "src/commands/deploy-command.js~deployrelutioncommand#deploy",
+    "class/src/commands/deploy-command.js~DeployRelutionCommand.html#instance-method-deploy",
+    "src/commands/deploy-command.js~DeployRelutionCommand#deploy",
+    "method"
+  ],
+  [
+    "src/commands/deploy-command.js~deployrelutioncommand#deployurl",
+    "class/src/commands/deploy-command.js~DeployRelutionCommand.html#instance-member-deployUrl",
+    "src/commands/deploy-command.js~DeployRelutionCommand#deployUrl",
+    "member"
+  ],
+  [
+    "src/commands/deploy-command.js~deployrelutioncommand#getappmetadata",
+    "class/src/commands/deploy-command.js~DeployRelutionCommand.html#instance-method-getAppMetadata",
+    "src/commands/deploy-command.js~DeployRelutionCommand#getAppMetadata",
+    "method"
+  ],
+  [
+    "src/commands/deploy-command.js~deployrelutioncommand#getjsessionid",
+    "class/src/commands/deploy-command.js~DeployRelutionCommand.html#instance-method-getJSESSIONID",
+    "src/commands/deploy-command.js~DeployRelutionCommand#getJSESSIONID",
+    "method"
+  ],
+  [
+    "src/commands/deploy-command.js~deployrelutioncommand#getserverbyname",
+    "class/src/commands/deploy-command.js~DeployRelutionCommand.html#instance-method-getServerByName",
+    "src/commands/deploy-command.js~DeployRelutionCommand#getServerByName",
+    "method"
+  ],
+  [
+    "src/commands/deploy-command.js~deployrelutioncommand#getservernames",
+    "class/src/commands/deploy-command.js~DeployRelutionCommand.html#instance-method-getServerNames",
+    "src/commands/deploy-command.js~DeployRelutionCommand#getServerNames",
+    "method"
+  ],
+  [
+    "src/commands/deploy-command.js~deployrelutioncommand#prepareurl",
+    "class/src/commands/deploy-command.js~DeployRelutionCommand.html#instance-method-prepareUrl",
+    "src/commands/deploy-command.js~DeployRelutionCommand#prepareUrl",
+    "method"
+  ],
+  [
+    "src/commands/deploy-command.js~deployrelutioncommand#projectrln",
+    "class/src/commands/deploy-command.js~DeployRelutionCommand.html#instance-member-projectRln",
+    "src/commands/deploy-command.js~DeployRelutionCommand#projectRln",
+    "member"
+  ],
+  [
+    "src/commands/deploy-command.js~deployrelutioncommand#sessionid",
+    "class/src/commands/deploy-command.js~DeployRelutionCommand.html#instance-member-sessionId",
+    "src/commands/deploy-command.js~DeployRelutionCommand#sessionId",
+    "member"
+  ],
+  [
+    "src/commands/deploy-command.js~deployrelutioncommand#sessionresponse",
+    "class/src/commands/deploy-command.js~DeployRelutionCommand.html#instance-member-sessionResponse",
+    "src/commands/deploy-command.js~DeployRelutionCommand#sessionResponse",
+    "member"
+  ],
+  [
+    "src/commands/deploy-command.js~deployrelutioncommand#tower",
+    "class/src/commands/deploy-command.js~DeployRelutionCommand.html#instance-member-tower",
+    "src/commands/deploy-command.js~DeployRelutionCommand#tower",
+    "member"
+  ],
+  [
+    "src/commands/deploy-command.js~deployrelutioncommand#uploadzip",
+    "class/src/commands/deploy-command.js~DeployRelutionCommand.html#instance-method-uploadZip",
+    "src/commands/deploy-command.js~DeployRelutionCommand#uploadZip",
+    "method"
+  ],
+  [
+    "src/commands/deploy-command.js~deployrelutioncommand#userform",
+    "class/src/commands/deploy-command.js~DeployRelutionCommand.html#instance-member-userForm",
+    "src/commands/deploy-command.js~DeployRelutionCommand#userForm",
     "member"
   ],
   [
@@ -534,21 +654,9 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/commands/server-command.js~servercommand#exit",
-    "class/src/commands/server-command.js~ServerCommand.html#instance-method-exit",
-    "src/commands/server-command.js~ServerCommand#exit",
-    "method"
-  ],
-  [
     "src/commands/server-command.js~servercommand#finddefaultindex",
     "class/src/commands/server-command.js~ServerCommand.html#instance-method-findDefaultIndex",
     "src/commands/server-command.js~ServerCommand#findDefaultIndex",
-    "method"
-  ],
-  [
-    "src/commands/server-command.js~servercommand#flatcommands",
-    "class/src/commands/server-command.js~ServerCommand.html#instance-method-flatCommands",
-    "src/commands/server-command.js~ServerCommand#flatCommands",
     "method"
   ],
   [
@@ -579,12 +687,6 @@ window.esdocSearchIndex = [
     "src/commands/server-command.js~servercommand#setdefaultserverindex",
     "class/src/commands/server-command.js~ServerCommand.html#instance-method-setDefaultServerIndex",
     "src/commands/server-command.js~ServerCommand#setDefaultServerIndex",
-    "method"
-  ],
-  [
-    "src/commands/server-command.js~servercommand#start",
-    "class/src/commands/server-command.js~ServerCommand.html#instance-method-start",
-    "src/commands/server-command.js~ServerCommand#start",
     "method"
   ],
   [
@@ -678,81 +780,45 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/components/starttree.js",
-    "file/src/components/StartTree.js.html",
-    "src/components/StartTree.js",
+    "src/helper/archiver-html5.js",
+    "file/src/helper/archiver-html5.js.html",
+    "src/helper/archiver-html5.js",
     "file"
   ],
   [
-    "src/components/starttree.js~starttree#choosed",
-    "class/src/components/StartTree.js~StartTree.html#instance-method-choosed",
-    "src/components/StartTree.js~StartTree#choosed",
-    "method"
-  ],
-  [
-    "src/components/starttree.js~starttree#commands",
-    "class/src/components/StartTree.js~StartTree.html#instance-member-commands",
-    "src/components/StartTree.js~StartTree#commands",
+    "src/helper/archiver-html5.js~archiver#bump",
+    "class/src/helper/archiver-html5.js~Archiver.html#instance-member-bump",
+    "src/helper/archiver-html5.js~Archiver#bump",
     "member"
   ],
   [
-    "src/components/starttree.js~starttree#constructor",
-    "class/src/components/StartTree.js~StartTree.html#instance-constructor-constructor",
-    "src/components/StartTree.js~StartTree#constructor",
+    "src/helper/archiver-html5.js~archiver#bumpversion",
+    "class/src/helper/archiver-html5.js~Archiver.html#instance-method-bumpVersion",
+    "src/helper/archiver-html5.js~Archiver#bumpVersion",
     "method"
   ],
   [
-    "src/components/starttree.js~starttree#getstartcommands",
-    "class/src/components/StartTree.js~StartTree.html#instance-method-getStartCommands",
-    "src/components/StartTree.js~StartTree#getStartCommands",
+    "src/helper/archiver-html5.js~archiver#constructor",
+    "class/src/helper/archiver-html5.js~Archiver.html#instance-constructor-constructor",
+    "src/helper/archiver-html5.js~Archiver#constructor",
     "method"
   ],
   [
-    "src/components/starttree.js~starttree#start",
-    "class/src/components/StartTree.js~StartTree.html#instance-method-start",
-    "src/components/StartTree.js~StartTree#start",
+    "src/helper/archiver-html5.js~archiver#createrlntowww",
+    "class/src/helper/archiver-html5.js~Archiver.html#instance-method-createRlnToWWW",
+    "src/helper/archiver-html5.js~Archiver#createRlnToWWW",
     "method"
   ],
   [
-    "src/components/tree.js",
-    "file/src/components/Tree.js.html",
-    "src/components/Tree.js",
-    "file"
-  ],
-  [
-    "src/components/tree.js~tree#constructor",
-    "class/src/components/Tree.js~Tree.html#instance-constructor-constructor",
-    "src/components/Tree.js~Tree#constructor",
+    "src/helper/archiver-html5.js~archiver#generatezip",
+    "class/src/helper/archiver-html5.js~Archiver.html#instance-method-generateZip",
+    "src/helper/archiver-html5.js~Archiver#generateZip",
     "method"
   ],
   [
-    "src/components/tree.js~tree#list",
-    "class/src/components/Tree.js~Tree.html#instance-method-list",
-    "src/components/Tree.js~Tree#list",
-    "method"
-  ],
-  [
-    "src/helper/inquirerhelper.js",
-    "file/src/helper/InquirerHelper.js.html",
-    "src/helper/InquirerHelper.js",
-    "file"
-  ],
-  [
-    "src/helper/inquirerhelper.js~inquirerhelper#chooser",
-    "class/src/helper/InquirerHelper.js~InquirerHelper.html#instance-method-chooser",
-    "src/helper/InquirerHelper.js~InquirerHelper#chooser",
-    "method"
-  ],
-  [
-    "src/helper/inquirerhelper.js~inquirerhelper#constructor",
-    "class/src/helper/InquirerHelper.js~InquirerHelper.html#instance-constructor-constructor",
-    "src/helper/InquirerHelper.js~InquirerHelper#constructor",
-    "method"
-  ],
-  [
-    "src/helper/inquirerhelper.js~inquirerhelper#inquirer",
-    "class/src/helper/InquirerHelper.js~InquirerHelper.html#instance-member-inquirer",
-    "src/helper/InquirerHelper.js~InquirerHelper#inquirer",
+    "src/helper/archiver-html5.js~archiver#rln",
+    "class/src/helper/archiver-html5.js~Archiver.html#instance-member-rln",
+    "src/helper/archiver-html5.js~Archiver#rln",
     "member"
   ],
   [
@@ -958,12 +1024,6 @@ window.esdocSearchIndex = [
     "class/src/helper/translation.js~Translate.html#instance-method-t",
     "src/helper/translation.js~Translate#t",
     "method"
-  ],
-  [
-    "src/helper/tree.js",
-    "file/src/helper/tree.js.html",
-    "src/helper/tree.js",
-    "file"
   ],
   [
     "src/helper/validation.js",
