@@ -1,10 +1,14 @@
 import Command from './command';
 import _ from 'lodash';
+/**
+ * ServerCommand
+ * you can create, delete, list, and add a default Server
+ */
 export default class ServerCommand extends Command {
   constructor() {
+    //available commands
     super('server', [['create', true, true], ['delete', true, true], ['list', true, true], ['default', true, true], ['exit', true, true]]);
     this.server = null;
-
     this.defaultServerIndex = null;
     this.tower = null;
     this.getServerList();
@@ -26,6 +30,10 @@ export default class ServerCommand extends Command {
     return this.server[this.defaultServerIndex];
   }
 
+  /**
+   * @description return only the command names
+   * @return {Array}
+   */
   flatCommands(){
     let flat = [];
     this.commands.forEach((command) => {
@@ -34,6 +42,10 @@ export default class ServerCommand extends Command {
     return flat;
   }
   //Stream mcaprc to json
+  /**
+   *
+   * @return {Promise.<T>}
+   */
   getServerList() {
     let self = this;
     return this.cli.streamRc().then(function () {
@@ -48,10 +60,19 @@ export default class ServerCommand extends Command {
     });
   }
 
+  /**
+   *
+   * @return {*[]}
+   */
   start() {
     return [this.name, this.i18n.t("Please Choose Your Command"), this.flatCommands()];
   }
 
+  /**
+   *
+   * @param server
+   * @description add a new Server
+   */
   add(server) {
     var self = this;
     if (this.server) {
