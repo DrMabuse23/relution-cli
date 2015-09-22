@@ -1,5 +1,5 @@
 /**
- * Created by pascalbrewing on 22/09/15
+ * Created by pascalbrewing on 13/04/15
  * Copyright (c)
  * 2015
  * M-Way Solutions GmbH. All rights reserved.
@@ -22,36 +22,40 @@
 'use strict';
 
 var fs = require('fs');
-
-export default class Html5Project {
-  constructor(prefix) {
-    //relution
-    this.prefix = prefix;
-    //relution.json
-    this.projectConf = null;
-    //console.log(process.env);
+var archiver = require('archiver');
+var archive = archiver('zip');
+/**
+ * archive the html5 only porject to a zip
+ */
+export default class Archiver{
+  constructor(rlnFile, bump = true){
+    this.rln = rlnFile;
+    this.bump = bump;
   }
 
-  isProject(){
-    //${this.prefix}
-    let path = `${process.env.PWD}/app.rln`;
-    let self = this;
-    return new Promise((resolve, reject) => {
-      return fs.access(path, fs.R_OK | fs.W_OK, function(err) {
-        if(err){
-          console.error("can't write");
-          return reject(false);
+  bumpVersion(data){
+    data.versionCode = data.versionCode + 1;
+    return data;
+  }
+
+  createRlnToWWW(path, data, cb){
+    //console.log(porcess)
+    if (this.bump) {
+      data = this.bumpVersion(data);
+      fs.writeFile(`${path}/app.rln`, JSON.stringify(data, null, 2), {encoding: 'utf8', mode: 755}, (err) => {
+        if (err) {
+          console.log(err);
         }
-        return fs.readFile(path, 'utf8', function (err, data) {
-          if (err) {
-            //console.error("can't read", err);
-            return reject(false);
-          }
-          self.projectConf = JSON.parse(data);
-          //console.log(self.projectConf);
-          return resolve(self.projectConf);
-        });
       });
-    });
+    }
+
+    return fs.writeFile(`${path}/www/app.rln`, JSON.stringify(data, null, 2), {encoding: 'utf8', mode: 755}, cb);
+  }
+
+  generateZip(path){
+    let date = new Date().getTime();
+    let mypath = `${path}/upload/${this.rln.versionCode}-${this.rln.package}-${date}.zip`;
+    let output = fs.createWriteStream(mypath);
+    return [output, archive];
   }
 }

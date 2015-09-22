@@ -23,7 +23,7 @@
 
 import RelutionCli from './../helper/relution';
 import Validation from './../helper/validation';
-import translate from './../helper/translation';
+import Translate from './../helper/translation';
 export default class Command {
 
   constructor(name, commands) {
@@ -31,11 +31,8 @@ export default class Command {
     this.commands = commands;
     this.cli = new RelutionCli();
     this.validation = new Validation();
-    this.i18n = new translate();
+    this.i18n = new Translate();
     this.tower = null;
-    //console.log('name', this.name);
-    //console.log('commands', this.commands);
-    //console.log('cli', JSON.stringify(this.cli));
   }
 
   init() {
@@ -60,7 +57,14 @@ export default class Command {
   start() {
     return [this.name, this.i18n.t("Please Choose Your Command"), this.flatCommands()];
   }
-  exit(inquirer, tower){
+
+  /**
+   *
+   * @param inquirer
+   * @param tower
+   * @return {*}
+     */
+  exit(tower){
     this.tower = tower;
     return this.tower.showCommands('Start', this.i18n.t('Please choose Your Command'), this.tower.startCommands);
   }

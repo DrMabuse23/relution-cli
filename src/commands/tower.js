@@ -74,7 +74,7 @@ export default class Tower {
   }
 
   getStartCommands(commands){
-    this.startCommands = Object.keys(commands)
+    this.startCommands = Object.keys(commands);
     return this.startCommands;
   }
 
@@ -93,11 +93,10 @@ export default class Tower {
     var self = this;
     var keys = Object.keys(answers);
     if (answers.Start) {
-      console.log('callback Start', answers);
+      //console.log('callback Start', answers);
       self.triggerCommand(answers.Start, 'start');
     } else {
-      console.log('callback sub', answers, keys[0], answers[keys[0]]);
-
+      //console.log('callback sub', answers, keys[0], answers[keys[0]]);
       self.triggerSubCommand(keys[0], answers[keys[0]]);
     }
   }
