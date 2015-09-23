@@ -39,7 +39,8 @@ const CREATEAPP = '/relution/api/v1/apps/';
 export default class DeployRelutionCommand extends Command {
 
   constructor() {
-    super('deploy', [['deploy', false, true], ['bumpup', false, true], ['exit', false, true]]);
+    //['bumpup', false, true]
+    super('deploy', [['deploy', false, true], ['exit', false, true]]);
     let self = this;
     this.userForm = {
       email: null,
@@ -138,7 +139,7 @@ export default class DeployRelutionCommand extends Command {
       self.archiver.createRlnToWWW(process.env.PWD, self.projectRln, (err, res) => {
         if (err) {
           console.log('app.rln cant be copied to the www folder');
-          return self.exit();
+          return self.exit(null, self.tower);
         }
         let temp = self.archiver.generateZip(process.env.PWD);
         var output = temp[0];
@@ -202,7 +203,7 @@ export default class DeployRelutionCommand extends Command {
         //console.log(res.results[0]);
         if (res.results[0].uuid) {
           var unsigned = _.filter(res.results[0].versions, {appUuid: null});
-          console.log('get Metadata successfull: ', JSON.stringify(unsigned));
+          console.log('get Metadata successfull: ', res.message);
           self.createAppOnServer(res.results[0].uuid, unsigned[0], self);
         } else {
           self.createAppOnServer(null, res.results[0], self);
@@ -213,43 +214,29 @@ export default class DeployRelutionCommand extends Command {
   createAppOnServer(uuid, data, self) {//
     // 3
     //https://mdmdev2.mwaysolutions.com/relution/api/v1/apps/4C0B639C-BA02-4D0D-95CC-CE014905DDF2/versions?_=1442910384479
-    console.log(`${self.deployUrl}${CREATEAPP}${uuid}/versions`);
+    //console.log(`${self.deployUrl}${CREATEAPP}${uuid}/versions`);
     //`${self.deployUrl}${CREATEAPP}${uuid}/versions`
-    fetch(`${self.deployUrl}${CREATEAPP}${uuid}/versions`, {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: {
-        'Cookie': self.sessionId,
-        'Content-type': 'application/json',
-        'Accept': 'application/json'
-      }
-    })
-      .then(function(res) {
-        console.log(res.ok);
-        console.log(res.status);
-        console.log(res.statusText);
-        console.log(res.headers.raw());
-        console.log(res.headers.get('content-type'));
-        return res.json();
-      }).then(function(json) {
-        console.log(json);
+    if (uuid !== null) {
+      fetch(`${self.deployUrl}${CREATEAPP}${uuid}/versions`, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'Cookie': self.sessionId,
+          'Content-type': 'application/json',
+          'Accept': 'application/json'
+        }
+      })
+        .then(function (res) {
+          if (res.status !== 200) {
+            console.log(res.statusText);
+          }
+          return res.json();
+        }).then(function (json) {
+        if (json.message) {
+          console.log(json.message);
+        }
+        return self.exit(null, self.tower);
       });
-    //request.post(`${self.deployUrl}${CREATEAPP}${uuid}/versions`, {
-    //    form: data,
-    //    headers: {
-    //      'Cookie': self.sessionId,
-    //      'Content-type': 'application/json',
-    //      'Accept': 'application/json'
-    //    }
-    //  },
-    //  (err, httpResponse, body) => {
-    //    if (err) {
-    //      return console.error('get metadata failed:', err);
-    //    }
-    //    console.log(body);
-    //    //var res = JSON.parse(body);
-    //    //console.log('Application is now available: ', res.message);
-    //    //return self.exit(self.tower);
-    //  });
+    }
   }
 }

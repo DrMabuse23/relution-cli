@@ -53,7 +53,7 @@ export default class RelutionCli {
       if (!exists) {
         return self.createRcFile();
       }
-      console.log(`${self.rcFilePath} available` )
+      //console.log(`${self.rcFilePath} available` )
     });
   }
 
@@ -131,6 +131,7 @@ export default class RelutionCli {
 
   updateRcFile(content){
     var self = this;
+    self.rcConf = content;
     return new Promise((resolve, reject) => {
       return fs.writeFile(self.rcFilePath, JSON.stringify(content), function (err) {
         if (err) reject(err);

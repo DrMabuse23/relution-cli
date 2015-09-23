@@ -22,7 +22,6 @@
 
 require("babel/polyfill");
 import Tower from './commands/tower';
-import StartTree from './components/StartTree';
 import RelutionCli from './helper/relution';
 
 export default class Cli{
@@ -37,11 +36,9 @@ export default class Cli{
 
   run(){
     var self = this;
-    var start = new StartTree();
     return this.helper.getProjectType().then(() => {
       self.commands = self.tower.getCommandsByType(self.helper.projectType);
-      var flat = self.tower.getStartCommands(self.commands);
-      return self.tower.showCommands('Start', 'Please choose Your Command', flat);
+      return self.tower.showCommands('Start', 'Please choose Your Command', self.tower.getStartCommands(self.commands));
     });
   }
 

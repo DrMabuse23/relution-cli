@@ -29,7 +29,7 @@ export default class Translate{
     this.default = defaultLang;
   }
   t(string){
-    console.log(super.locales);
+    //console.log(super.locales);
     if (this.locales[this.default][string]) {
       return this.locales[this.default][string];
     }

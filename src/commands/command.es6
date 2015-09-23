@@ -46,6 +46,7 @@ export default class Command {
     let flat = [];
     var self = this;
     this.commands.forEach((command) => {
+      //console.log('command', command);
       flat.push(self.i18n.t(command[0]));
     });
     return flat;
@@ -55,7 +56,11 @@ export default class Command {
    * @return {*[]}
    */
   start() {
-    return [this.name, this.i18n.t("Please Choose Your Command"), this.flatCommands()];
+    if (this.commands.length > 0) {
+      var c = this.flatCommands();
+      //console.log('flatCommands', c);
+      return [this.name, this.i18n.t("Please Choose Your Command"), c];
+    }
   }
 
   /**
@@ -64,7 +69,7 @@ export default class Command {
    * @param tower
    * @return {*}
      */
-  exit(tower){
+  exit(inquirer, tower){
     this.tower = tower;
     return this.tower.showCommands('Start', this.i18n.t('Please choose Your Command'), this.tower.startCommands);
   }

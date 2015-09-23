@@ -37,7 +37,8 @@ export default class Tower {
     this.startCommands = null;
     this.inquirer = require('inquirer');
     var self = this;
-    commands.forEach((command) => {
+    //console.log(commands);
+    this.commands.forEach((command) => {
       self.registerCommand(command);
     });
   }
@@ -50,11 +51,13 @@ export default class Tower {
 
   triggerCommand(name, method) {
     var subCommands = this.commands[name][method]();
+    //console.log(subCommands);
+    //console.log('subCommands', subCommands);
     return this.showCommands(subCommands[0], subCommands[1], subCommands[2], this.commandCallback);
   }
 
   triggerSubCommand(name, method) {
-    console.log(name, method);
+    //console.log(name, method);
     return this.commands[name][method](this.inquirer, this);
   }
 
@@ -79,6 +82,7 @@ export default class Tower {
   }
 
   showCommands(name = "Start", message = "Please Choose Your Command",  commands){
+    //console.log('commands', commands);
     return this.inquirer.prompt([
       {
         type: "list",
@@ -94,10 +98,10 @@ export default class Tower {
     var keys = Object.keys(answers);
     if (answers.Start) {
       //console.log('callback Start', answers);
-      self.triggerCommand(answers.Start, 'start');
+      return self.triggerCommand(answers.Start, 'start');
     } else {
       //console.log('callback sub', answers, keys[0], answers[keys[0]]);
-      self.triggerSubCommand(keys[0], answers[keys[0]]);
+      return self.triggerSubCommand(keys[0], answers[keys[0]]);
     }
   }
 }

@@ -29,7 +29,8 @@ import _ from 'lodash';
 export default class ServerCommand extends Command {
   constructor() {
     //available commands
-    super('server', [['create', true, true], ['delete', true, true], ['list', true, true], ['default', true, true], ['exit', true, true]]);
+    //super('server', [['create', true, true], ['delete', true, true], ['list', true, true], ['default', true, true], ['exit', true, true]]);
+    super('server', [['create', true, true], ['delete', true, true],['exit', true, true]]);
     this.server = null;
     this.defaultServerIndex = null;
     this.tower = null;
@@ -87,7 +88,7 @@ export default class ServerCommand extends Command {
     //console.error('this.server', self.cli.rcConf);
     self.cli.updateRcFile(self.cli.rcConf).then((res) => {
       //console.log('updatedfile', res, self);
-      self.tower.showCommands('Start', this.i18n.t('Please choose Your Command'), self.tower.startCommands);
+      self.exit(null, self.tower);
     });
   }
 
@@ -102,10 +103,12 @@ export default class ServerCommand extends Command {
     //console.error('this.server', self.cli.rcConf);
     self.cli.updateRcFile(self.cli.rcConf).then((res) => {
       console.log('Server is removed from list');
-      self.tower.showCommands('Start', this.i18n.t('Please choose Your Command'), self.tower.startCommands);
+      self.getServerList();
+      self.exit(null, self.tower);
     });
   }
   delete(inquirer, tower){
+    this.tower = tower;
     var self = this;
     var servers = [];
     var i = 0;
@@ -117,7 +120,7 @@ export default class ServerCommand extends Command {
       {
         type: "list",
         name: `${self.name} delete`,
-        message:  'Please choose the server you will delete',
+        message:  self.i18n.t('Please choose the server you will delete'),
         choices: servers
       }
     ], this.removeServer.bind(this));
@@ -130,40 +133,40 @@ export default class ServerCommand extends Command {
       {
         type    : 'input',
         name    : 'name',
-        message : 'Server Name',
+        message :self.i18n.t('Server Name'),
         validate: function (value) {
           var pass = value.match(self.validation.stringNumber);
           if ( pass ) {
             return true;
           } else {
-            return 'Please enter a valid Server name';
+            return self.i18n.t('Please enter a valid Server name');
           }
         }
       },
       {
         type    : 'input',
         name    : 'baseUrl',
-        message : 'Enter the server url (http://....)',
+        message : self.i18n.t('Enter the server url (http://....)'),
         validate: function (value) {
           var pass = value.match(self.validation.urlPattern);
 
           if ( pass ) {
             return true;
           } else {
-            return 'Please enter a valid url';
+            return self.i18n.t('Please enter a valid url');
           }
         }
       },
       {
         type    : 'input',
         name    : 'userName',
-        message : 'Enter your username',
+        message : self.i18n.t('Enter your username'),
         validate: self.validation.notEmptyValidate('Username')
       },
       {
         type    : 'password',
         name    : 'password',
-        message : 'Enter your Password',
+        message : self.i18n.t('Enter your Password'),
         validate: self.validation.notEmptyValidate('Password')
       }
     ];
