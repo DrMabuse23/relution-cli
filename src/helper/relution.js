@@ -118,11 +118,21 @@ export default class RelutionCli {
         if (err) {
           reject(err);
         }
-        return fs.writeFile(self.rcFilePath, {encoding: 'utf8', mode: 755}, function (err) {
+        var dummy = {
+          "defaultServer": "demo",
+          "server": [{
+            "name": "demo",
+            "baseUrl": "https://live.relution.io",
+            "username": "demo",
+            "password": "demo"
+          }]
+        };
+        return fs.writeFile(self.rcFilePath, JSON.stringify(dummy), {encoding: 'utf8', mode: 777}, function (err) {
           if (err) {
             reject(err);
           }
           console.log('rc file are written');
+          self.streamRc();
           return resolve(true);
         });
       });
