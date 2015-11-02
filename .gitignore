@@ -33,6 +33,5 @@ node_modules
 nbproject
 .idea
 .node_history
-lib
 docs
 .publish
