@@ -38,7 +38,8 @@ export default class Cli{
     var self = this;
     return this.helper.getProjectType().then(() => {
       self.commands = self.tower.getCommandsByType(self.helper.projectType);
-      return self.tower.showCommands('Start', 'Please choose Your Command', self.tower.getStartCommands(self.commands));
+      return self.commands;
+      //return self.tower.showCommands('Start', 'Please choose Your Command', self.tower.getStartCommands(self.commands));
     });
   }
 

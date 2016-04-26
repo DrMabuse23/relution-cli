@@ -59,7 +59,7 @@ export default class RelutionCli {
 
   getProjectType () {
     //var promise = new Promise();
-    return Promise.all([this.setProject, this.setHtml5Project()]);
+    return Promise.all([this.setProject(), this.setHtml5Project()]);
   }
 
   setProject(){

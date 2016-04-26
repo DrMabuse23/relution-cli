@@ -39,7 +39,7 @@ export default class Html5Project {
     return new Promise((resolve, reject) => {
       return fs.access(path, fs.R_OK | fs.W_OK, function(err) {
         if(err){
-          console.error("can't write");
+          //console.error(`can't write ${path}`);
           return reject(false);
         }
         return fs.readFile(path, 'utf8', function (err, data) {
