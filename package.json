@@ -13,7 +13,9 @@
     "test:watch": "npm run test -- -w"
   },
   "devDependencies": {
-    "babel": "*",
+    "babel-cli": "^6.7.7",
+    "babel-core": "^6.0.0",
+    "babel-preset-es2015": "^6.0.14",
     "chai": "*",
     "gulp": "^3.9.0",
     "gulp-gh-pages": "^0.5.2",
@@ -24,7 +26,6 @@
     "watchify": "^3.2.3"
   },
   "dependencies": {
-    "@reactivex/rxjs": "^5.0.0-beta.6",
     "archiver": "^0.15.1",
     "blessed": "^0.1.81",
     "blessed-contrib": "^2.2.0",
@@ -39,6 +40,7 @@
     "react-blessed": "^0.1.3",
     "readline": "^1.3.0",
     "request": "^2.63.0",
+    "rxjs": "^5.0.0-beta.6",
     "yeoman-environment": "^1.2.5"
   },
   "bin": {

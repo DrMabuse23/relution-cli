@@ -20,7 +20,6 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-require("babel/polyfill");
 import Tower from './commands/tower';
 import RelutionCli from './helper/relution';
 
@@ -39,8 +38,14 @@ export default class Cli{
     return this.helper.getProjectType().then(() => {
       self.commands = self.tower.getCommandsByType(self.helper.projectType);
       return self.commands;
-      //return self.tower.showCommands('Start', 'Please choose Your Command', self.tower.getStartCommands(self.commands));
     });
   }
 
+  addListener(commandDispatcher){
+    commandDispatcher.subscribe({
+      next: x => console.log('got value ' + x),
+      error: err => console.error('something wrong occurred: ' + err),
+      complete: () => console.log('done'),
+    });
+  }
 }

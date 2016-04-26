@@ -1,10 +1,22 @@
 #!/usr/bin/env node
 'use strict';
+
+import Rx from 'rxjs/Rx';
+import Cli from './cli';
+
+
 let path = require('path');
 let nopt = require('nopt');
 let pkg = require('./../package.json');
-import Cli from './cli';
+let observe = null;
 let cli = new Cli(nopt());
+
+let dispatcher = Rx.Observable.create((observer) => {
+  observe = observer;
+  cli.addListener(dispatcher);
+});
+
+
 
 let readline = require('readline'),
   rl = readline.createInterface(process.stdin, process.stdout);
@@ -41,6 +53,7 @@ rl.on('line', function(line) {
       rl.prompt();
       break;
     default:
+      observe.next(line.trim().split(' ') );
       console.log(JSON.stringify(line.trim().split(' '), null, 2));
       break;
   }
